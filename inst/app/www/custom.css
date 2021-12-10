@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+
+.next {
+  float: right;
+}
+
+.back {
+  float: left;
+}
+
+.cover {
+  background-color: #5091a3;
+  color: white;
+  border-radius: 25px;
+}

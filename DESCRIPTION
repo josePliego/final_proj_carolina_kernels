@@ -1,17 +1,21 @@
-Package: popo
-Title: An Amazing Shiny App
+Package: carolinaKernels
+Title: Carolina Kernels Final Project
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "firstname",
-           family = "lastname",
-           role = c("aut", "cre"),
-           email = "your@email.com")
-Description: What the package does (one paragraph).
-License: What license is it under?
+Authors@R: c(
+    person("Andrew", "Amore", email = "andrew.amore@duke.edu", role = "aut"),
+    person("Jaskaran", "Singh", email = "jaskaran.singh@duke.edu", role = "aut"),
+    person("Jose", "Pliego", email = "jose.pliego.san.martin@duke.edu", role = c("aut", "cre"))
+    )
+Description: Final project Shiny App for STA 523.
+License: MIT + file LICENSE
 Imports: 
     config (>= 0.3.1),
     golem (>= 0.3.1),
     shiny (>= 1.7.1)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
