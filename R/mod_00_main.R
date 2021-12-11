@@ -11,26 +11,18 @@ mod_00_main_ui <- function(id){
   ns <- NS(id)
   tagList(
     tags$div(
-      fluidRow(
-        column(2),
-        column(
-          8,
-          class = "cover",
-          align = "center",
-          h1("Carolina Kernels Final Project"),
-          selectInput(
-            ns("choice"),
-            label = "What do you want to do?",
-            choices = list("Play Visualization", "Summary Statistics", "Other")
-          ),
-          shinyWidgets::actionBttn(
-            ns("go"),
-            "Get Started!",
-            style = "stretch"
-          ),
-          tags$br()
-        ),
-        column(2)
+      class = "page",
+      id = ns("pag0"),
+      mod_01_cover_ui(ns("01_cover_ui_1"))
+    ),
+    shinyjs::hidden(
+      tags$div(
+        class = "page",
+        id = ns("pag1")
+      ),
+      tags$div(
+        class = "page",
+        id = ns("pag2")
       )
     )
   )
@@ -40,8 +32,21 @@ mod_00_main_ui <- function(id){
 #'
 #' @noRd
 mod_00_main_server <- function(id){
-  moduleServer( id, function(input, output, session){
+  moduleServer(id, function(input, output, session){
     ns <- session$ns
+    r <- reactiveValues(pag = 0)
+
+    mod_01_cover_server("01_cover_ui_1", r)
+
+    observe({
+      shinyjs::hide(selector = ".page")
+      shinyjs::show(paste0("pag", r$pag))
+      print(r$pag)
+    })
+
+    # observe(input$go, {
+    #
+    # })
 
   })
 }

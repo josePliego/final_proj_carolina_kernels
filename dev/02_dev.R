@@ -11,11 +11,15 @@
 #### CURRENT FILE: DEV SCRIPT #####
 ###################################
 
+usethis::use_package("shinyWidgets")
+usethis::use_package("shinyjs")
+
 # Engineering
 
 ## Add modules ----
 ## Create a module infrastructure in R/
 golem::add_module(name = "00_main")
+golem::add_module(name = "01_cover")
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*
