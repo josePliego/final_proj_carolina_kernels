@@ -7,20 +7,20 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_04_summaries_ui <- function(id){
+mod_04_summaries_ui <- function(id) {
   ns <- NS(id)
   tagList(
     tags$div(
       tableOutput(ns("table"))
-      )
     )
+  )
 }
 
 #' 04_summaries Server Functions
 #'
 #' @noRd
-mod_04_summaries_server <- function(id){
-  moduleServer(id, function(input, output, session){
+mod_04_summaries_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
     output$table <- renderTable(shinipsum::random_table(10, 5))
   })
