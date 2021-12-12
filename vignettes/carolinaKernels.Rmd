@@ -1,0 +1,40 @@
+---
+title: "carolinaKernels"
+output: rmarkdown::html_vignette
+bibliography: bibliography.bib
+vignette: >
+  %\VignetteIndexEntry{carolinaKernels}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(carolinaKernels)
+```
+
+This vignette gives an overview of the `{carolinaKernels}` package and how to use the Shiny app it contains. It also explains the infrastructure used to build the project based on the `{golem}` package by @pkg:golem.
+
+# Building Robust Shiny Apps
+
+The book *Engineering Production-Grade Shiny Apps* (@book:fay) introduces an opinionated framework to build robust Shiny Apps, allowing developers to better handle complexity and construct projects over solid foundations. The framework relies on the idea of creating a Shiny App as an R package. The package structure provides many advantages over quick and easy Shiny prototypes. Some of these advantages are adding metadata, dependencies, functions, documentation, unit tests, and easy installation and deployment. For these reasons, we decided to build our final project using the `{golem}` framework.
+
+Besides designing our app as a package, we also built the app using a modular structure. The use of Shiny modules makes the code base more accessible, both by avoiding R files with thousands of lines of code and also allowing team members to work on different aspects of the app simultaneously.
+
+Giving a thorough explanation of the `{golem}` infrastructure is beyond the scope of this project, but the interested reader will find great gratification when implementing the framework into their app developments process. 
+
+# App UI Design
+
+We built our user interface with one main goal in mind: simplicity. An app that is easy to use is more likely to accomplish the objectives for which it was designed. When users face a new interface, it is unlikely that they will spend time reading long documentation. Many users learn how to work with an app by trial and error, clicking on things and expecting them to work as they would in another context.
+
+With this in mind, we built our app using multiple pages. Organizing in pages is helpful because the developer gains some control on how the user explores the app. By creating "Next" and "Back" buttons, we can force the user to make a selection in any inputs and avoid the app failing while the user interacts with it.
+
+In addition to being simple and practical, we also want the app to be visually attractive. We want the design to catch the user's eye, while not being too crowded with features that make the user experience difficult. The book authors call this problem **feature-creep** and define it as the *process of adding features to the app that complicate the usage and the maintenance of the product, to the point that the product may be unusable or impossible to maintain*.
+
+We also tried to include few reactive elements. An excessive amount of reactive features can make the app slow and the interface overwhelming for the user. The page structure is also helpful in this regard, as including buttons to navigate avoids rendering plots with no reason if the user makes a mistake in the inputs.
