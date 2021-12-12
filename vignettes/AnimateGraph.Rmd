@@ -37,12 +37,6 @@ tracking = readRDS("tracking.rds")
 ```
 
 
-## Animated Graphs
-
-Part of the final shiny application includes animated ggplot graphs showcasing the player location data
- the NFL tracks every Sunday. For each distinct special teams play types (extra point, kickoff, punt, and field goal)
-
-
 Grab one play for plot testing:
 ```{r}
 sample_gameId = "2020092012"
