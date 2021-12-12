@@ -20,10 +20,8 @@ library(dplyr)
 library(ggplot2)
 library(tidyverse)
 
-plays = read.csv(file = here::here("data/plays.csv"), header = TRUE)
-players = read.csv(file = here::here("data/players.csv"), header = TRUE)
-tracking = readRDS(here::here("data/sample_play.rds"))
-pff = read.csv(here::here("data/PFFScoutingData.csv"), header = TRUE)
+plays <- PLAYS
+pff <- PFFScoutingData
 
 plays <- plays %>%
   left_join(pff %>% select(gameId,playId,snapDetail,
@@ -39,6 +37,4 @@ getPlot_team_yardage(plays,"Punt")
 getPlot_hangTime(plays,"Punt")
 getPlot_topPunters(plays,"Punt")
 getPlot_topKickers(plays,"Punt")
-
-
 ```

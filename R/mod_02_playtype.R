@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_02_playtype_ui <- function(id){
+mod_02_playtype_ui <- function(id) {
   ns <- NS(id)
   tagList(
     # shinyWidgets::setBackgroundImage(src = "www/background3.jpeg"),
@@ -22,28 +22,28 @@ mod_02_playtype_ui <- function(id){
           tabPanel(
             "Summary Statistics",
             mod_04_summaries_ui(ns("04_summaries_ui_1"))
-            ),
+          ),
           tabPanel(
             "Plots",
             mod_05_plots_ui(ns("05_plots_ui_1"))
-            )
           )
         )
       )
+    )
   )
 }
 
 #' 02_playtype Server Functions
 #'
 #' @noRd
-mod_02_playtype_server <- function(id, r){
-  moduleServer(id, function(input, output, session){
+mod_02_playtype_server <- function(id, r) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
     output$header <- renderUI({
       h2(paste(stringr::str_remove(r$play_type, "s$"), "Analysis"))
     })
     mod_04_summaries_server("04_summaries_ui_1")
-    mod_05_plots_server("05_plots_ui_1")
+    mod_05_plots_server("05_plots_ui_1", r)
   })
 }
 

@@ -13,6 +13,12 @@
 
 usethis::use_package("shinyWidgets")
 usethis::use_package("shinyjs")
+usethis::use_package("dplyr")
+usethis::use_package("ggplot2")
+usethis::use_package("rlang")
+usethis::use_package("tidyr")
+
+usethis::use_pipe(export = TRUE)
 
 # Engineering
 
@@ -26,9 +32,7 @@ golem::add_module(name = "04_summaries")
 golem::add_module(name = "05_plots")
 
 ## Add helper functions ----
-## Creates fct_* and utils_*
-# golem::add_fct("helpers")
-# golem::add_utils("helpers")
+usethis::use_r("theme_carKer")
 
 ## External resources
 ## Creates .css file at inst/app/www
