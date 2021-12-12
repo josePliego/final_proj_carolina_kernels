@@ -21,10 +21,12 @@ mod_02_playtype_ui <- function(id){
           type = "tabs",
           tabPanel(
             "Summary Statistics",
-            # mod_04_summaries_ui(ns("04_summaries_ui_1")),
-            NULL
+            mod_04_summaries_ui(ns("04_summaries_ui_1"))
             ),
-          tabPanel("Plots")
+          tabPanel(
+            "Plots",
+            mod_05_plots_ui(ns("05_plots_ui_1"))
+            )
           )
         )
       )
@@ -41,6 +43,7 @@ mod_02_playtype_server <- function(id, r){
       h2(paste(stringr::str_remove(r$play_type, "s$"), "Analysis"))
     })
     mod_04_summaries_server("04_summaries_ui_1")
+    mod_05_plots_server("05_plots_ui_1")
   })
 }
 
