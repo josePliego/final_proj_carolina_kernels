@@ -36,38 +36,6 @@ plays = readRDS("plays.rds")
 tracking = readRDS("tracking.rds")
 ```
 
-## Introduce Challenge/Objective of the App
-The NFL, through its Next Gen Stats (NGS) initiative, collects mountains of player data every Sunday. 
-Each year, the organization releases portions of this archive as part of an annual analytics
-competition coined the "Big Data Bowl".
-
-This year's prompt asks participants to investigate special teams play. For those unfamiliar with North
-American football, four distinct play types compromise special teams: kickoffs, punts, extra points, and
-field goals. Each team has a different set of players that are involved in these "special" play types.
-
-Included with the prompt was data from all special teams plays from 2018-2020, including player movement/location
-data, PFF scouting data, and metadata regarding each play (time of game, outcome, team, etc.).
-
-
-<!--include -->
-
-
-
-```{r}
-
-```
-
-
-To 
-
-Our application
-
-## The Data
-
-```{r, display-raw-sample}
-
-```
-
 
 ## Animated Graphs
 
