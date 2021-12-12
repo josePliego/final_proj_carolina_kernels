@@ -20,10 +20,10 @@ library(dplyr)
 library(ggplot2)
 library(tidyverse)
 
-plays = read.csv(file = paste(getwd(),"/data/plays.csv",sep=''), header = TRUE)
-players = read.csv(file = paste(getwd(),"/data/players.csv",sep=''), header = TRUE)
-tracking = readRDS(paste0(getwd(),"/data/sample_play.rds"))
-pff = read.csv(paste0(getwd(),"/data/PFFScoutingData.csv"))
+plays = read.csv(file = here::here("data/plays.csv"), header = TRUE)
+players = read.csv(file = here::here("data/players.csv"), header = TRUE)
+tracking = readRDS(here::here("data/sample_play.rds"))
+pff = read.csv(here::here("data/PFFScoutingData.csv"), header = TRUE)
 
 plays <- plays %>%
   left_join(pff %>% select(gameId,playId,snapDetail,
@@ -79,33 +79,33 @@ getPlot_team_yardage=function(df,playType){
 }
 
 getPlot_hangTime=function(df,playType){
-  pff %>% ggplot(aes(x=hangTime,y=..count..))+
-  geom_histogram(fill="blue")
+  df %>% filter(specialTeamsPlayType==playType) %>% 
+    ggplot(aes(x=hangTime,y=..density..))+
+    geom_histogram(fill="blue")
 }
 
+#table(pff$kickDirectionIntended,pff$kickDirectionActual)
 
+getPlot_topPunters=function(df,playType){
+  df %>% filter(specialTeamsPlayType==playType) %>% 
+    group_by(kickerId) %>%
+    summarize(correctPunt=sum(snapDetail == "OK", na.rm = TRUE), tot=n()) %>%
+    arrange(desc(correctPunt)) %>%
+    left_join(players %>% select(kickerId=nflId,displayName),by=c("kickerId")) %>%
+    slice(1:10) %>%
+    ggplot(aes(y=reorder(displayName,correctPunt),x=correctPunt))+
+    geom_bar(stat="identity",fill="blue")+labs(y="Player")
+}
 
-table(pff$kickDirectionIntended,pff$kickDirectionActual)
-
-plays %>% group_by(kickerId) %>%
-  summarize(correctPunt=sum(snapDetail == "OK", na.rm = TRUE), tot=n()) %>%
-  #mutate(snapRatio=correctPunt/tot) %>%
-  arrange(desc(correctPunt)) %>%
-  left_join(players %>% select(kickerId=nflId,displayName),by=c("kickerId")) %>%
-  slice(1:10) %>%
-  ggplot(aes(y=displayName,x=correctPunt))+
-  geom_bar(stat="identity")
-
-
-plays %>% group_by(kickerId) %>%
-  summarize(kickAccuracy=sum(kickDirectionIntended==kickDirectionActual,na.rm = TRUE), tot=n()) %>%
-  #mutate(kickAccuracy=kickAccuracy/tot) %>%
-  arrange(desc(kickAccuracy)) %>%
-  left_join(players %>% select(kickerId=nflId,displayName),by=c("kickerId")) %>%
-  slice(1:10) %>%
-  ggplot(aes(y=displayName,x=kickAccuracy))+
-  geom_bar(stat="identity")
-
-
+getPlot_topPunters=function(df,playType){
+  df %>% filter(specialTeamsPlayType==playType) %>% 
+    group_by(kickerId) %>%
+    summarize(kickAccuracy=sum(kickDirectionIntended==kickDirectionActual,na.rm = TRUE), tot=n()) %>%
+    arrange(desc(kickAccuracy)) %>%
+    left_join(players %>% select(kickerId=nflId,displayName),by=c("kickerId")) %>%
+    slice(1:10) %>%
+    ggplot(aes(y=reorder(displayName,kickAccuracy),x=kickAccuracy))+
+    geom_bar(stat="identity",fill="blue")+labs(x="Accurate Kicks",y="Player")
+}
 
 ```
