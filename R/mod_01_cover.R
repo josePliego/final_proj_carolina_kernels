@@ -20,11 +20,12 @@ mod_01_cover_ui <- function(id){
           h1("Carolina Kernels Final Project"),
           selectInput(
             ns("choice"),
-            label = "What do you want to do?",
+            label = "Choose a play type to analize:",
             choices = list(
-              "Play Visualization" = "playvis",
-              "Summary Statistics" = "summary",
-              "Other" = "other"
+              "Field Goals",
+              "Extra Points",
+              "Punts",
+              "Kickoffs"
             )
           ),
           shinyWidgets::actionBttn(
@@ -34,6 +35,20 @@ mod_01_cover_ui <- function(id){
             ),
           tags$br(),
           tags$br(),
+          tags$div(
+            class = "about",
+            h4("How to use the app"),
+            paste(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "Cras ac tincidunt mi. Etiam et porttitor lorem, sed sodales",
+              "tortor. Duis ut aliquet lectus. Nam volutpat posuere dolor non",
+              "fringilla. Donec ac porta dolor. Phasellus malesuada et risus",
+              "eu malesuada. Praesent purus dolor, placerat eget orci ac,",
+              "vehicula fermentum mi. Nam pharetra nulla sed arcu egestas, sit",
+              "amet consequat mauris scelerisque. Proin in tortor leo. In hac",
+              "habitasse platea dictumst."
+            )
+          ),
           tags$br()
         ),
         column(2)
@@ -46,17 +61,13 @@ mod_01_cover_ui <- function(id){
 #'
 #' @noRd
 mod_01_cover_server <- function(id, r){
-  moduleServer( id, function(input, output, session){
+  moduleServer(id, function(input, output, session){
     ns <- session$ns
     observeEvent(input$go, {
-      r$pag <- as.numeric(dplyr::case_when(
-        input$choice == "playvis" ~ 1,
-        input$choice == "summary" ~ 2,
-        input$choice == "other" ~ 3,
-        TRUE ~ 0
-      ))
+      r$play_type <- as.character(input$choice)
+      r$pag <- 1
+      })
     })
-  })
 }
 
 ## To be copied in the UI

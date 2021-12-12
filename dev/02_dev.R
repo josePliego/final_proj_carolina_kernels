@@ -20,6 +20,10 @@ usethis::use_package("shinyjs")
 ## Create a module infrastructure in R/
 golem::add_module(name = "00_main")
 golem::add_module(name = "01_cover")
+golem::add_module(name = "02_playtype")
+golem::add_module(name = "03_playvis")
+golem::add_module(name = "04_summaries")
+golem::add_module(name = "05_plots")
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*

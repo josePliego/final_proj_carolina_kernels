@@ -2,16 +2,28 @@ h1 {
   text-align: center;
 }
 
-.next {
-  float: right;
+h2 {
+  text-align: center;
 }
 
 .back {
   float: left;
 }
 
-.cover {
+.next {
+  float: right;
+}
+
+/*.cover {
   background-color: #5091a3;
   color: white;
   border-radius: 25px;
+}
+https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel/43201952#43201952
+.tabbable > .nav > li > a {
+  background-color: #5091a3;
+}
+*/
+.gif {
+  text-align: center;
 }

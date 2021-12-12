@@ -9,9 +9,11 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      theme = shinythemes::shinytheme("cyborg"),
-      shinyWidgets::setBackgroundImage(src = "www/background.jpeg")
+    bootstrapPage(
+      theme = bslib::bs_theme(bootswatch = "darkly"),
+    # fluidPage(
+      # theme = shinythemes::shinytheme("cyborg"),
+      shinyWidgets::setBackgroundImage(src = "www/background4.png")
     ),
     mod_00_main_ui("00_main_ui_1")
   )
