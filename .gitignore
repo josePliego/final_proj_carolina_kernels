@@ -5,4 +5,5 @@
 .RData
 .Ruserdata
 inst/doc
-/data/*.csv
+/data/games.csv
+/data/tracking*
