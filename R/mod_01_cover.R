@@ -49,7 +49,11 @@ mod_01_cover_ui <- function(id){
               "habitasse platea dictumst."
             )
           ),
-          tags$br()
+          tags$br(),
+          tags$br(),
+          tags$div(
+            "Image from https://getwalls.io/nfl-football-hd-wall-294704/"
+          )
         ),
         column(2)
       )

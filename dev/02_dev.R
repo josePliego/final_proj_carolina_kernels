@@ -41,6 +41,7 @@ golem::add_css_file("custom")
 ## Tests ----
 ## Add one line by test you want to create
 # usethis::use_test("app")
+golem::use_recommended_tests()
 
 # Documentation
 
@@ -50,6 +51,5 @@ golem::add_css_file("custom")
 usethis::use_vignette("AnimateGraph")
 usethis::use_vignette("summaryPlots")
 usethis::use_vignette("carolinaKernels")
-
 
 rstudioapi::navigateToFile("dev/03_deploy.R")

@@ -11,6 +11,7 @@ License: MIT + file LICENSE
 Imports: 
     config (>= 0.3.1),
     golem (>= 0.3.1),
+    processx,
     shiny (>= 1.7.1),
     shinyjs,
     shinyWidgets
@@ -19,5 +20,11 @@ LazyData: true
 RoxygenNote: 7.1.2
 Suggests: 
     rmarkdown,
-    knitr
+    knitr,
+    testthat (>= 3.0.0),
+    spelling
 VignetteBuilder: knitr
+Config/testthat/edition: 3
+Language: en-US
+Depends: 
+    R (>= 2.10)
