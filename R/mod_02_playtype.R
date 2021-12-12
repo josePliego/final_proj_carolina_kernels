@@ -16,15 +16,18 @@ mod_02_playtype_ui <- function(id){
       sidebarPanel = sidebarPanel(
         h3("Filters")
       ),
-      mainPanel = mainPanel(tabsetPanel(
-        type = "tabs",
-        tabPanel(
-          "Summary Statistics",
-          mod_04_summaries_ui(ns("04_summaries_ui_1"))
-        ),
-        tabPanel("Plots")
+      mainPanel = mainPanel(
+        tabsetPanel(
+          type = "tabs",
+          tabPanel(
+            "Summary Statistics",
+            # mod_04_summaries_ui(ns("04_summaries_ui_1")),
+            NULL
+            ),
+          tabPanel("Plots")
+          )
+        )
       )
-    ))
   )
 }
 
