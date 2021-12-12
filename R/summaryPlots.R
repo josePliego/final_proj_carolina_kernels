@@ -60,17 +60,17 @@ c(snapDetail,kickAccuracy=(kickDirectionIntended==kickDirectionActual))
 
 plays %>% group_by(kickerId) %>%
   summarize(correctPunt=sum(snapDetail == "OK", na.rm = TRUE), tot=n()) %>%
-  mutate(snapRatio=correctPunt/tot) %>%
-  arrange(desc(snapRatio)) %>%
+  #mutate(snapRatio=correctPunt/tot) %>%
+  arrange(desc(correctPunt)) %>%
   left_join(players %>% select(kickerId=nflId,displayName),by=c("kickerId")) %>%
   slice(1:10) %>%
-  ggplot(aes(y=displayName,x=snapRatio))+
+  ggplot(aes(y=displayName,x=correctPunt))+
   geom_bar(stat="identity")
 
 
 plays %>% group_by(kickerId) %>%
   summarize(kickAccuracy=sum(kickDirectionIntended==kickDirectionActual,na.rm = TRUE), tot=n()) %>%
-  mutate(kickAccuracy=kickAccuracy/tot) %>%
+  #mutate(kickAccuracy=kickAccuracy/tot) %>%
   arrange(desc(kickAccuracy)) %>%
   left_join(players %>% select(kickerId=nflId,displayName),by=c("kickerId")) %>%
   slice(1:10) %>%
