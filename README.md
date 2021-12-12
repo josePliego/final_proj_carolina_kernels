@@ -1,5 +1,8 @@
 Statisitcal Programming - Final Project
 -----------
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
 
 Proposal survey is due by 5:00 pm on Friday, November 19th.
 
