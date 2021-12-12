@@ -47,5 +47,6 @@ golem::add_css_file("custom")
 ## Vignette ----
 # usethis::use_vignette("popo")
 # devtools::build_vignettes()
+usethis::use_vignette("summaryPlots")
 
 rstudioapi::navigateToFile("dev/03_deploy.R")
