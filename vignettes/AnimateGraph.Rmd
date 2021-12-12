@@ -1,0 +1,82 @@
+---
+title: "AnimateGraph"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{AnimateGraph}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+# library(popo)
+library(dplyr)
+library(ggplot2)
+library(gganimate)
+
+library(tidyverse)
+library(cowplot)
+library(ggridges)
+library(repr)
+
+library(magrittr)
+
+#turning off warnings
+options(warn=-1)
+
+#setting plot width and height
+options(repr.plot.width=15, repr.plot.height = 10)
+```
+
+Read in Raw Data
+```{r}
+plays = read.csv(file = paste(getwd(),"/data/plays.csv",sep=''), header = TRUE)
+tracking = read.csv(file = paste(getwd(),"/data/tracking2020.csv",sep=''), header = TRUE)
+```
+
+Grab one play for plot testing:
+```{r}
+sample_gameId = "2020092012"
+sample_playId = "1357"
+
+sample_play = tracking %>% filter(gameId == sample_gameId & playId == sample_playId)
+
+saveRDS(sample_play, file = paste(getwd(), "/data/sample_play.rds", sep=''))
+```
+
+
+```{r}
+anim  = sample_play %>% ggplot() + geom_point(aes(x = x, y = y)) + transition_time(frameId)  +
+        ease_aes('linear') + 
+        NULL
+
+nFrames <- max(sample_play$frameId)
+
+anim_save('LowestOffsetAnimation.gif',
+          animate(anim, width = 720, height = 440,
+                  fps = 10, nframe = nFrames))
+
+
+anim_save('LowestOffsetAnimation.gif',
+          animate(sample_play %>% ggplot() + geom_point(aes(x = x, y = y)) + transition_time(frameId)  +
+        ease_aes('linear') + 
+        NULL, width = 720, height = 440,
+                  fps = 10, nframe = nFrames))
+
+
+list.files(path='/vignettes/', pattern = '*.png', full.names = TRUE) %>% 
+        image_read() %>% # reads each path file
+        image_join() %>% # joins image
+        image_animate(fps=4) %>% # animates, can opt for number of loops
+        image_write("test_anime.gif") # write to current dir
+
+
+```
+```
+
