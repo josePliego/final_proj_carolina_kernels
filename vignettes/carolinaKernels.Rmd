@@ -38,3 +38,47 @@ With this in mind, we built our app using multiple pages. Organizing in pages is
 In addition to being simple and practical, we also want the app to be visually attractive. We want the design to catch the user's eye, while not being too crowded with features that make the user experience difficult. The book authors call this problem **feature-creep** and define it as the *process of adding features to the app that complicate the usage and the maintenance of the product, to the point that the product may be unusable or impossible to maintain*.
 
 We also tried to include few reactive elements. An excessive amount of reactive features can make the app slow and the interface overwhelming for the user. The page structure is also helpful in this regard, as including buttons to navigate avoids rendering plots with no reason if the user makes a mistake in the inputs.
+
+# Introduce NFL Challenge
+The NFL, through its Next Gen Stats (NGS) initiative, collects mountains of player data every Sunday. 
+Each year, the organization releases portions of this archive as part of an annual analytics competition
+coined the "Big Data Bowl".
+
+This year participants were asked to investigate special teams play. For those unfamiliar with North
+American football, four distinct play types compose special teams: kickoffs, punts, extra points, and
+field goals. Kickoffs and punts transition possession from one team to another, while extra points
+and field goals involve scoring points by kicking the ball thru a goal (post).
+
+Each team has different sets of players involved in special teams functions which are different than 
+regular offensive and defensive rosters. Included in the NFL's data dump was scouting information,
+player movement for all special teams plays between 2018-2020, and metadata corresponding to
+each play (time of game, outcome, team, etc.).
+
+Here, is a sample of the raw data files:
+
+```{r, sample-nrows}
+# display nicely formatted table with files used for analysis
+
+```
+
+
+# Feature - Animated Graphs
+One of the unique aspects of this dataset is the location tracking. The NFL embeds microchips in the
+game ball and shoulder pads of every player. Every 0.1 seconds these chips record dynamic spatial information
+such as X/Y location, orientation, and velocity.
+
+To allow CarolinaKernel end users the ability to appreciate the NFL's ability to collect 
+
+# EDA Discussion
+
+
+
+
+
+
+
+
+
+
+
+
