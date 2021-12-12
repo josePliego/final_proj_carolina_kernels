@@ -10,6 +10,9 @@
 mod_05_plots_ui <- function(id){
   ns <- NS(id)
   tagList(
+    tags$div(
+      plotOutput(ns("sum_plot"))
+    )
   )
 }
 
@@ -19,7 +22,10 @@ mod_05_plots_ui <- function(id){
 mod_05_plots_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-
+    output$sum_plot <- renderPlot({
+      shinipsum::random_ggplot() +
+        ggplot2::theme_dark()
+        })
   })
 }
 
