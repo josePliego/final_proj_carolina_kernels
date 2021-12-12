@@ -15,10 +15,32 @@ plays %>% select(specialTeamsResult,kickLength) %>%
   ggplot(aes(x=kickLength,y=specialTeamsResult,fill=specialTeamsResult))+
   geom_boxplot(alpha=0.5)
 
+plays %>% select(playResult,specialTeamsResult) %>%
+  ggplot(aes(x=playResult,y=specialTeamsResult,fill=specialTeamsResult))+
+  geom_boxplot(alpha=0.5)
 
-stat="identity",position="dodge"
+plays %>%
+  select(playResult,kickLength,specialTeamsPlayType) %>%
+  ggplot(aes(x=playResult,y=kickLength,
+             color=specialTeamsPlayType))+
+  geom_point()
 
-plays %>% select(playResult,kickLength,specialTeamsPlayType) %>% ggplot(aes(x=playResult,y=kickLength,color=specialTeamsPlayType))+geom_point()
+plays %>%
+  select(down,specialTeamsPlayType) %>%
+  ggplot(aes(x=down,y=..count..,fill=specialTeamsPlayType))+
+  geom_bar(position="dodge")
+
+plays %>%
+  select(down,kickLength) %>%
+  ggplot(aes(x=factor(down),y=kickLength,fill=factor(down)))+
+  geom_boxplot(position="dodge",alpha=0.5)
+
+plays %>%
+  select(kickReturnYardage,possessionTeam,specialTeamsPlayType) %>%
+  ggplot(aes(y=possessionTeam,x=kickReturnYardage,fill=specialTeamsPlayType))+
+  geom_bar(stat="identity")
+
+
 
 
 
