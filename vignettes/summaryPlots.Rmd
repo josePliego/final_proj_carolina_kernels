@@ -30,82 +30,15 @@ plays <- plays %>%
                            kickDirectionIntended,kickDirectionActual,hangTime),
             by=c("gameId","playId"),snapDetail=snapDetail)
 
-getPlot_kick_playType = function(df,playType){
-  df %>% filter(specialTeamsPlayType==playType) %>% 
-    select(specialTeamsPlayType,kickLength) %>%
-    ggplot(aes(x=kickLength,y=..density..)) +
-    geom_histogram(alpha=0.2,fill="blue")
-}
+getPlot_kick_playType(plays,"Punt")
+getPlot_kick_result(plays,"Punt")
+getPlot_results(plays,"Punt")
+getPlot_kick_playResult(plays,"Punt")
+getPlot_down_kick(plays,"Punt")
+getPlot_team_yardage(plays,"Punt")
+getPlot_hangTime(plays,"Punt")
+getPlot_topPunters(plays,"Punt")
+getPlot_topKickers(plays,"Punt")
 
-getPlot_kick_result=function(df,playType){
-  df %>% filter(specialTeamsPlayType==playType) %>% 
-    select(specialTeamsResult,kickLength) %>%
-    ggplot(aes(x=kickLength,y=specialTeamsResult,fill=specialTeamsResult))+
-    geom_boxplot(alpha=0.5)+theme(legend.position = "none")
-}
-
-getPlot_results=function(df,playType){
-  df %>% filter(specialTeamsPlayType==playType) %>% 
-    select(playResult,specialTeamsResult) %>%
-    ggplot(aes(x=playResult,y=specialTeamsResult,fill=specialTeamsResult))+
-    geom_boxplot(alpha=0.5)+theme(legend.position = "none")
-}
-
-getPlot_kick_playResult=function(df,playType){
-  df %>% filter(specialTeamsPlayType==playType) %>% 
-    select(playResult,kickLength) %>%
-    ggplot(aes(x=playResult,y=kickLength))+
-    geom_point(alpha=0.5,color="blue")
-}
-
-getPlot_down_kick=function(df,playType){
-  df %>% filter(specialTeamsPlayType==playType) %>% 
-    select(down,kickLength) %>%
-    ggplot(aes(x=factor(down),y=kickLength,fill=factor(down)))+
-    geom_boxplot(position="dodge",alpha=0.5)+
-    theme(legend.position = "none")+
-    labs(x="down")
-}
-
-getPlot_team_yardage=function(df,playType){
-  df %>% 
-    filter(specialTeamsPlayType==playType) %>% 
-    group_by(possessionTeam) %>% 
-    summarize(kickReturnYardage=median(kickReturnYardage,na.rm = TRUE)) %>% 
-    arrange(desc(kickReturnYardage)) %>%
-    ggplot(aes(y=reorder(possessionTeam,kickReturnYardage),x=kickReturnYardage))+
-    geom_bar(stat="identity",fill="blue")+
-    labs(y="Possession Team")
-}
-
-getPlot_hangTime=function(df,playType){
-  df %>% filter(specialTeamsPlayType==playType) %>% 
-    ggplot(aes(x=hangTime,y=..density..))+
-    geom_histogram(fill="blue")
-}
-
-#table(pff$kickDirectionIntended,pff$kickDirectionActual)
-
-getPlot_topPunters=function(df,playType){
-  df %>% filter(specialTeamsPlayType==playType) %>% 
-    group_by(kickerId) %>%
-    summarize(correctPunt=sum(snapDetail == "OK", na.rm = TRUE), tot=n()) %>%
-    arrange(desc(correctPunt)) %>%
-    left_join(players %>% select(kickerId=nflId,displayName),by=c("kickerId")) %>%
-    slice(1:10) %>%
-    ggplot(aes(y=reorder(displayName,correctPunt),x=correctPunt))+
-    geom_bar(stat="identity",fill="blue")+labs(y="Player")
-}
-
-getPlot_topPunters=function(df,playType){
-  df %>% filter(specialTeamsPlayType==playType) %>% 
-    group_by(kickerId) %>%
-    summarize(kickAccuracy=sum(kickDirectionIntended==kickDirectionActual,na.rm = TRUE), tot=n()) %>%
-    arrange(desc(kickAccuracy)) %>%
-    left_join(players %>% select(kickerId=nflId,displayName),by=c("kickerId")) %>%
-    slice(1:10) %>%
-    ggplot(aes(y=reorder(displayName,kickAccuracy),x=kickAccuracy))+
-    geom_bar(stat="identity",fill="blue")+labs(x="Accurate Kicks",y="Player")
-}
 
 ```
