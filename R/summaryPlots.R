@@ -41,10 +41,10 @@ plays %>%
   ggplot(aes(y=possessionTeam,x=kickReturnYardage,fill=specialTeamsPlayType))+
   geom_bar(stat="identity")
 
-plays %>%
-  select(kickReturnYardage,ret,specialTeamsPlayType) %>%
-  ggplot(aes(y=possessionTeam,x=kickReturnYardage,fill=specialTeamsPlayType))+
-  geom_bar(stat="identity")
+# plays %>%
+#   select(kickReturnYardage,ret,specialTeamsPlayType) %>%
+#   ggplot(aes(y=possessionTeam,x=kickReturnYardage,fill=specialTeamsPlayType))+
+#   geom_bar(stat="identity")
 
 pff %>% ggplot(aes(x=hangTime,y=..count..))+
   geom_histogram(fill="blue")
