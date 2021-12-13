@@ -19,11 +19,12 @@ mod_03_playvis_ui <- function(id) {
     tags$div(
       h4("About the Animation"),
       paste(
-        "Each play type (extra point, punt, field goal, and kickoff) are selectable in the dropdown menu.",
-        "The animations are precompiled into gif files to reduce load times and improve user experience.",
-        "Each dot represents a player and the brown triangle is the football.",
+        "Each special teams event (punt, extra point, field goal, and kickoff) has several distinct outcomes according to the NFL dataset.",
+        "One play per outcome has been included for exploration and can be changed via drop-down selection.",
+        "The animations are precompiled and embedded as a gifs to reduce load times and improve user experience.",
+        "Each point represents a player and the brown triangle is the football.",
         "White horizontal lines denote the hash marks and the yellow vertical bars represent goal posts.",
-        "Gif file names are shown in the drop down menu and delineate the play type and result separated by underscore."
+        "The line numberings are the yard lines with endzones denoted with thick black lines at either end of the field."
       )
     )
   )
