@@ -6,5 +6,4 @@
 .Ruserdata
 inst/doc
 /data/games.csv
-/data/tracking*
 /vignettes/*.rds
