@@ -17,6 +17,9 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(carolinaKernels)
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
 ```
 
 This vignette gives an overview of the `{carolinaKernels}` package and how to use the Shiny app it contains. It also explains the infrastructure used to build the project based on the `{golem}` package by @pkg:golem.
@@ -58,11 +61,25 @@ Here, is a sample of the raw data files used in the application:
 
 ```{r, sample-nrows}
 # display nicely formatted table with files used for analysis
-carolinaKernels::PFFScoutingData
-carolinaKernels::PLAYERS
-carolinaKernels::PLAYS
+carolinaKernels::PFFScoutingData %>%
+  head(., 10) %>%
+  kbl() %>%
+  kable_material(c("striped", "hover"))
 
-carolinaKernels::TRACKING
+carolinaKernels::PLAYERS %>%
+  head(., 10) %>%
+  kbl() %>%
+  kable_material(c("striped", "hover"))
+
+carolinaKernels::PLAYS %>%
+  head(., 10) %>%
+  kbl() %>%
+  kable_material(c("striped", "hover"))
+
+carolinaKernels::TRACKING %>%
+  head(., 10) %>%
+  kbl() %>%
+  kable_material(c("striped", "hover"))
 ```
 
 
@@ -84,9 +101,7 @@ Here is an example of one of the plots stored as a png file:
 ```{r, sample-play-plot}
 sample_gameId = "2020092012"
 sample_playId = "1357"
-
-sample_play = readRDS(paste(here(), "/data/sample_play.rds", sep=''))
-sample_play = tracking %>% filter(gameId == sample_gameId & playId == sample_playId)
+sample_play = carolinaKernels::TRACKING %>% filter(gameId == sample_gameId & playId == sample_playId)
 
 # add a group (is_football to denote if tracking ) 
 sample_play = sample_play %>% 
