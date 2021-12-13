@@ -1,3 +1,10 @@
+#' Plot List By Playtype
+#'
+#' @param playtype Special teams play type
+#'
+#' @return A list with plots available.
+#'
+#' @examples make_plot_list()
 make_plot_list <- function(playtype = "Punt") {
   out <- list()
   if (playtype == "Punt") {
@@ -12,13 +19,25 @@ make_plot_list <- function(playtype = "Punt") {
   }
 
   if (playtype == "Field Goal") {
-    out[[1]] <- "Kick Length"
-    out[[2]] <- "Kick Outcome vs Kick Length"
-    out[[3]] <- "Kick Length By Down"
+    out[[1]] <- "Kick Length" # plot_kick_playType
+    out[[2]] <- "Kick Outcome vs Kick Length" # plot_kick_result
+    out[[3]] <- "Kick Length By Down" # plot_down_kick
   }
 
   if (playtype == "Kickoff") {
-    out[[1]] <- "Kick Length"
-
+    out[[1]] <- "Kick Length" # plot_kick_playType
+    out[[2]] <- "Kick Outcome vs Kick Length" # plot_kick_result
+    out[[3]] <- "Yards Gained vs Kick Outcome" # plot_results
+    out[[4]] <- "Yards Gained vs Kick Length" # plot_kick_playResult
+    out[[5]] <- "Return Yards By Opponent Teams" # plot_team_yardage
+    out[[6]] <- "Kick Hang Time" # plot_hangTime
+    out[[7]] <- "Accurate Kicks (Top 10)" # plot_top_kickers
   }
+
+  if (playtype == "Extra Point") {
+    out[[1]] <- "Extra Point"
+  }
+
+  return(out)
+
 }

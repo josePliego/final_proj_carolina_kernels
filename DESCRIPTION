@@ -16,6 +16,7 @@ Imports:
     magrittr,
     processx,
     rlang,
+    scales,
     shiny (>= 1.7.1),
     shinyjs,
     shinyWidgets,

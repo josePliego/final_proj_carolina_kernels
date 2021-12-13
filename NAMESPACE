@@ -2,6 +2,7 @@
 
 export("%>%")
 export(plot_down_kick)
+export(plot_extra_point)
 export(plot_hangTime)
 export(plot_kick_playResult)
 export(plot_kick_playType)

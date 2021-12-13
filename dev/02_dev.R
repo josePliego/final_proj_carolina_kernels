@@ -17,6 +17,7 @@ usethis::use_package("dplyr")
 usethis::use_package("ggplot2")
 usethis::use_package("rlang")
 usethis::use_package("tidyr")
+usethis::use_package("scales")
 
 usethis::use_pipe(export = TRUE)
 
