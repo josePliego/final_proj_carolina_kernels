@@ -7,7 +7,7 @@
 #' @return A ggplot figure containing histogram of `kickLength`
 #' @export
 #' @importFrom rlang .data
-getPlot_kick_playType <- function(df, playType) {
+plot_kick_playType <- function(df, playType) {
 
   fig <- df %>%
     dplyr::filter(.data$specialTeamsPlayType == playType) %>%
@@ -34,7 +34,7 @@ getPlot_kick_playType <- function(df, playType) {
 #'   comparison
 #' @export
 #'
-getPlot_kick_result <- function(df, playType) {
+plot_kick_result <- function(df, playType) {
 
   fig <- df %>%
     dplyr::filter(.data$specialTeamsPlayType == playType) %>%
@@ -51,9 +51,7 @@ getPlot_kick_result <- function(df, playType) {
       x = "Yards", y = "", title = "KICK LENGTH DISTRIBUTION BY PLAY RESULT"
       ) +
     theme_carKer() +
-    ggplot2::theme(
-      legend.position = "none"
-      )
+    ggplot2::theme(legend.position = "none")
 
   return(fig)
 
@@ -61,7 +59,7 @@ getPlot_kick_result <- function(df, playType) {
 
 
 
-#' Title
+#' Yards Gained By Play Result Plots
 #'
 #' @param df A dataframe containing information on NFL plays
 #' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.
@@ -69,14 +67,29 @@ getPlot_kick_result <- function(df, playType) {
 #' @return A ggplot figure containing specialTeamsResult v/s playResult comparison
 #' @export
 #'
-getPlot_results <- function(df, playType) {
+plot_results <- function(df, playType) {
+
   fig <- df %>%
-    filter(specialTeamsPlayType == playType) %>%
-    select(playResult, specialTeamsResult) %>%
-    ggplot(aes(x = playResult, y = specialTeamsResult, fill = specialTeamsResult)) +
-    geom_boxplot(alpha = 0.5) +
-    theme(legend.position = "none")
+    dplyr::filter(.data$specialTeamsPlayType == playType) %>%
+    dplyr::select(.data$playResult, .data$specialTeamsResult) %>%
+    tidyr::drop_na() %>%
+    ggplot2::ggplot(
+      ggplot2::aes(
+        x = .data$playResult,
+        y = reorder(.data$specialTeamsResult, .data$playResult)
+        )
+      ) +
+    ggplot2::geom_boxplot(fill = "antiquewhite") +
+    ggplot2::labs(
+      x = "Yards",
+      y = "",
+      title = "YARDS GAINED BY THE KICKING TEAM BY PLAY RESULT"
+    ) +
+    theme_carKer() +
+    ggplot2::theme(legend.position = "none")
+
   return(fig)
+
 }
 
 
@@ -88,13 +101,23 @@ getPlot_results <- function(df, playType) {
 #' @return A ggplot figure containing kick length v/s playResult comparison
 #' @export
 #'
-getPlot_kick_playResult <- function(df, playType) {
+plot_kick_playResult <- function(df, playType) {
+
   fig <- df %>%
-    filter(specialTeamsPlayType == playType) %>%
-    select(playResult, kickLength) %>%
-    ggplot(aes(x = playResult, y = kickLength)) +
-    geom_point(alpha = 0.5, color = "blue")
+    dplyr::filter(.data$specialTeamsPlayType == playType) %>%
+    dplyr::select(.data$playResult, .data$kickLength) %>%
+    tidyr::drop_na() %>%
+    ggplot2::ggplot(ggplot2::aes(x = .data$playResult, y = .data$kickLength)) +
+    ggplot2::geom_point(alpha = 0.5, color = "antiquewhite") +
+    ggplot2::labs(
+      x = "Yards Gained",
+      y = "Kick Length",
+      title = "KICK LENGTH VS YARDS GAINED BY KICKING TEAM"
+      ) +
+    theme_carKer()
+
   return(fig)
+
 }
 
 
@@ -107,7 +130,7 @@ getPlot_kick_playResult <- function(df, playType) {
 #' @return A ggplot figure containing kick length v/s down comparison
 #' @export
 #'
-getPlot_down_kick <- function(df, playType) {
+plot_down_kick <- function(df, playType) {
   fig <- df %>%
     filter(specialTeamsPlayType == playType) %>%
     select(down, kickLength) %>%
@@ -128,7 +151,7 @@ getPlot_down_kick <- function(df, playType) {
 #' @return A ggplot figure containing kickReturnYardage v/s possessionTeam comparison
 #' @export
 #'
-getPlot_team_yardage <- function(df, playType) {
+plot_team_yardage <- function(df, playType) {
   fig <- df %>%
     filter(specialTeamsPlayType == playType) %>%
     group_by(possessionTeam) %>%
@@ -150,7 +173,7 @@ getPlot_team_yardage <- function(df, playType) {
 #' @return A ggplot figure containing histogram of hangTime
 #' @export
 #'
-getPlot_hangTime <- function(df, playType) {
+plot_hangTime <- function(df, playType) {
   fig <- df %>%
     filter(specialTeamsPlayType == playType) %>%
     ggplot(aes(x = hangTime, y = ..density..)) +
@@ -168,7 +191,7 @@ getPlot_hangTime <- function(df, playType) {
 #' @return A ggplot figure containing top Punter players
 #' @export
 #'
-getPlot_topPunters <- function(df, playType) {
+plot_topPunters <- function(df, playType) {
   fig <- df %>%
     filter(specialTeamsPlayType == playType) %>%
     group_by(kickerId) %>%
@@ -192,7 +215,7 @@ getPlot_topPunters <- function(df, playType) {
 #' @return A ggplot figure containing top players with accurate kicks
 #' @export
 #'
-getPlot_topKickers <- function(df, playType) {
+plot_topKickers <- function(df, playType) {
   fig <- df %>%
     filter(specialTeamsPlayType == playType) %>%
     group_by(kickerId) %>%
