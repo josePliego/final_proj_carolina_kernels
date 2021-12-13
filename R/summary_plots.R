@@ -299,17 +299,17 @@ plot_top_kickers <- function(df, playType) {
 #' Extra Points Plots
 #'
 #' @param df A dataframe containing information on NFL plays
-#' @param plot_type Plot one of distribution, successful or unsuccesful
+#' @param plot_type Plot one of Distribution, Successful or Unsuccesful
 #'
 #' @return A ggplot figure containing extra point plots
 #' @export
 #'
-plot_extra_point <- function(df, plot_type = "distribution") {
+plot_extra_point <- function(df, plot_type = "Distribution") {
 
   fig <- df %>%
     dplyr::filter(.data$specialTeamsPlayType == "Extra Point")
 
-  if (plot_type == "distribution") {
+  if (plot_type == "Distribution") {
     fig <- fig %>%
       dplyr::select(.data$specialTeamsResult) %>%
       tidyr::drop_na() %>%
@@ -329,7 +329,7 @@ plot_extra_point <- function(df, plot_type = "distribution") {
       theme_carKer()
   }
 
-  if (plot_type == "successful") {
+  if (plot_type == "Successful") {
     fig <- fig %>%
       dplyr::group_by(.data$kickerId) %>%
       dplyr::summarise(
@@ -361,7 +361,7 @@ plot_extra_point <- function(df, plot_type = "distribution") {
       theme_carKer()
   }
 
-  if (plot_type == "unsuccessful") {
+  if (plot_type == "Unsuccessful") {
     fig <- fig %>%
       dplyr::group_by(.data$kickerId) %>%
       dplyr::summarise(

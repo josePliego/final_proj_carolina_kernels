@@ -35,7 +35,9 @@ make_plot_list <- function(playtype = "Punt") {
   }
 
   if (playtype == "Extra Point") {
-    out[[1]] <- "Extra Point"
+    out[[1]] <- "Distribution"
+    out[[2]] <- "Successful"
+    out[[3]] <- "Unsuccessful"
   }
 
   return(out)
