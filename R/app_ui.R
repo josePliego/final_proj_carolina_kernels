@@ -11,7 +11,7 @@ app_ui <- function(request) {
     # Your application UI logic
     bootstrapPage(
       theme = bslib::bs_theme(bootswatch = "darkly"),
-    # fluidPage(
+      # fluidPage(
       # theme = shinythemes::shinytheme("cyborg"),
       shinyWidgets::setBackgroundImage(src = "www/background4.png")
     ),
@@ -27,21 +27,19 @@ app_ui <- function(request) {
 #' @import shiny
 #' @importFrom golem add_resource_path activate_js favicon bundle_resources
 #' @noRd
-golem_add_external_resources <- function(){
-
+golem_add_external_resources <- function() {
   add_resource_path(
-    'www', app_sys('app/www')
+    "www", app_sys("app/www")
   )
 
   tags$head(
     favicon(),
     bundle_resources(
-      path = app_sys('app/www'),
-      app_title = 'carolinaKernels'
+      path = app_sys("app/www"),
+      app_title = "carolinaKernels"
     ),
     shinyjs::useShinyjs()
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert()
   )
 }
-

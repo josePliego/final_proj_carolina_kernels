@@ -1,28 +1,55 @@
 #' Contains player tracking data from season 2020.
 #'
-#' A dataset containing the prices and other attributes of almost 54,000
-#' diamonds.
+#' A dataset containing the tracking location of different players across various games
 #'
-#' @format A data frame with 53940 rows and 10 variables:
+#' @format A data frame with 41561 rows and 19 variables:
 #' \describe{
 #'   \item{time}{Time stamp of play (time, yyyy-mm-dd, hh:mm:ss)}
 #'   \item{x}{Player position along the long axis of the field, 0 - 120 yards.}
 #'   \item{y}{Player position along the short axis of the field, 0 - 53.3 yards.}
-#'   \item{s}{}
-#'   \item{a}{}
-#'   \item{dis}{}
-#'   \item{o}{}
-#'   \item{dir}{}
-#'   \item{event}{}
-#'   \item{nflId}{}
-#'   \item{displayName}{}
-#'   \item{jerseyNumber}{}
-#'   \item{position}{}
-#'   \item{team}{}
-#'   \item{frameId}{}
-#'   \item{gameId}{}
-#'   \item{playId}{}
-#'   \item{playDirection}{}
+#'   \item{s}{Speed in yards/second}
+#'   \item{a}{Speed in yards/second^2}
+#'   \item{dis}{Distance traveled from prior time point, in yards}
+#'   \item{o}{Player orientation (deg), 0 - 360 degrees}
+#'   \item{dir}{Angle of player motion (deg), 0 - 360 degrees}
+#'   \item{event}{Tagged play details, including moment of ball snap, pass release, pass catch, tackle, etc}
+#'   \item{nflId}{Player identification number, unique across players}
+#'   \item{displayName}{Player name}
+#'   \item{jerseyNumber}{Jersey number of player}
+#'   \item{position}{Player position group}
+#'   \item{team}{Team (away or home) of corresponding player}
+#'   \item{frameId}{Frame identifier for each play, starting at 1}
+#'   \item{gameId}{Game identifier, unique}
+#'   \item{playId}{Play identifier, not unique across games}
+#'   \item{playDirection}{Direction that the offense is moving}
 #' }
-#' @source \url{http://www.diamondse.info/}
+#' @source \url{https://www.kaggle.com/c/nfl-big-data-bowl-2022/data}
+"TRACKING"
+
+#' Contains data on plays: Extra Point, Field Goal, Kickoff or Punt
+#'
+#' A dataset containing the tracking location of different players across various games
+#'
+#' @format A data frame with 41561 rows and 19 variables:
+#' \describe{
+#'   \item{time}{Time stamp of play (time, yyyy-mm-dd, hh:mm:ss)}
+#'   \item{x}{Player position along the long axis of the field, 0 - 120 yards.}
+#'   \item{y}{Player position along the short axis of the field, 0 - 53.3 yards.}
+#'   \item{s}{Speed in yards/second}
+#'   \item{a}{Speed in yards/second^2}
+#'   \item{dis}{Distance traveled from prior time point, in yards}
+#'   \item{o}{Player orientation (deg), 0 - 360 degrees}
+#'   \item{dir}{Angle of player motion (deg), 0 - 360 degrees}
+#'   \item{event}{Tagged play details, including moment of ball snap, pass release, pass catch, tackle, etc}
+#'   \item{nflId}{Player identification number, unique across players}
+#'   \item{displayName}{Player name}
+#'   \item{jerseyNumber}{Jersey number of player}
+#'   \item{position}{Player position group}
+#'   \item{team}{Team (away or home) of corresponding player}
+#'   \item{frameId}{Frame identifier for each play, starting at 1}
+#'   \item{gameId}{Game identifier, unique}
+#'   \item{playId}{Play identifier, not unique across games}
+#'   \item{playDirection}{Direction that the offense is moving}
+#' }
+#' @source \url{https://www.kaggle.com/c/nfl-big-data-bowl-2022/data}
 "TRACKING"

@@ -4,7 +4,7 @@
 #'     DO NOT REMOVE.
 #' @import shiny
 #' @noRd
-app_server <- function( input, output, session ) {
+app_server <- function(input, output, session) {
   # Your application server logic
   mod_00_main_server("00_main_ui_1")
 }

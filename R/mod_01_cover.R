@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_01_cover_ui <- function(id){
+mod_01_cover_ui <- function(id) {
   ns <- NS(id)
   tagList(
     tags$div(
@@ -32,7 +32,7 @@ mod_01_cover_ui <- function(id){
             ns("go"),
             "Get Started!",
             style = "bordered"
-            ),
+          ),
           tags$br(),
           tags$br(),
           tags$div(
@@ -64,14 +64,14 @@ mod_01_cover_ui <- function(id){
 #' 01_cover Server Functions
 #'
 #' @noRd
-mod_01_cover_server <- function(id, r){
-  moduleServer(id, function(input, output, session){
+mod_01_cover_server <- function(id, r) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
     observeEvent(input$go, {
       r$play_type <- as.character(input$choice)
       r$pag <- 1
-      })
     })
+  })
 }
 
 ## To be copied in the UI

@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_00_main_ui <- function(id){
+mod_00_main_ui <- function(id) {
   ns <- NS(id)
   tagList(
     tags$div(
@@ -54,8 +54,8 @@ mod_00_main_ui <- function(id){
 #' 00_main Server Functions
 #'
 #' @noRd
-mod_00_main_server <- function(id){
-  moduleServer(id, function(input, output, session){
+mod_00_main_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
     r <- reactiveValues(pag = 0)
 
@@ -87,7 +87,6 @@ mod_00_main_server <- function(id){
     # observe(input$go, {
     #
     # })
-
   })
 }
 

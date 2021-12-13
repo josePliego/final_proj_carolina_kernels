@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_03_playvis_ui <- function(id){
+mod_03_playvis_ui <- function(id) {
   ns <- NS(id)
   tagList(
     uiOutput(ns("header")),
@@ -23,7 +23,7 @@ mod_03_playvis_ui <- function(id){
             "Choose a play:",
             choices = list.files(app_sys("app/cache/gifs/"))
           )
-          ),
+        ),
         column(4)
       )
     ),
@@ -37,8 +37,8 @@ mod_03_playvis_ui <- function(id){
 #' 03_playvis Server Functions
 #'
 #' @noRd
-mod_03_playvis_server <- function(id, r){
-  moduleServer(id, function(input, output, session){
+mod_03_playvis_server <- function(id, r) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
     output$header <- renderUI({
       h2(paste(stringr::str_remove(r$play_type, "s$"), "Dynamic Visualization"))
@@ -46,11 +46,12 @@ mod_03_playvis_server <- function(id, r){
     observeEvent(input$play, {
       play <- as.character(input$play)
       img_dir <- paste0(app_sys("app/cache/gifs/"), "/", input$play)
-      output$play_plot <- renderImage({
-        list("src" = img_dir)
+      output$play_plot <- renderImage(
+        {
+          list("src" = img_dir)
         },
         deleteFile = FALSE
-        )
+      )
     })
   })
 }
