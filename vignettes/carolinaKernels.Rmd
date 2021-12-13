@@ -42,34 +42,28 @@ In addition to being simple and practical, we also want the app to be visually a
 
 We also tried to include few reactive elements. An excessive amount of reactive features can make the app slow and the interface overwhelming for the user. The page structure is also helpful in this regard, as including buttons to navigate avoids rendering plots with no reason if the user makes a mistake in the inputs.
 
-# Introduce NFL Challenge
-The NFL, through its Next Gen Stats (NGS) initiative, collects mountains of player data every Sunday. Each year, the organization releases portions of this archive as part of an annual analytics competition coined the "Big Data Bowl".
+# Raw Data Sample
+Here, is a sample of the raw data files used in the application for summary statistics and visualizations. See /R/data.R for more information.
 
-This year participants were asked to investigate special teams play. For those unfamiliar with North American football, four distinct play types compose special teams: kickoffs, punts, extra points, and field goals. Kickoffs and punts transition possession from one team to another, while extra points and field goals involve scoring points by kicking the ball thru a goal (post).
-
-Each team has different sets of players involved in special teams functions which are different than regular offensive and defensive rosters. Included in the NFL's data dump was scouting information, player movement for all special teams plays between 2018-2020, and metadata corresponding to each play (time of game, outcome, team, etc.).
-
-Here, is a sample of the raw data files used in the application:
-
-```{r, sample-nrows}
+```{r, sample-nrows, echo=FALSE}
 # display nicely formatted table with files used for analysis
 carolinaKernels::PFFScoutingData %>%
-  head(., 10) %>%
+  head(., 4) %>%
   kbl() %>%
   kable_material(c("striped", "hover"))
 
 carolinaKernels::PLAYERS %>%
-  head(., 10) %>%
+  head(., 4) %>%
   kbl() %>%
   kable_material(c("striped", "hover"))
 
 carolinaKernels::PLAYS %>%
-  head(., 10) %>%
+  head(., 4) %>%
   kbl() %>%
   kable_material(c("striped", "hover"))
 
 carolinaKernels::TRACKING %>%
-  head(., 10) %>%
+  head(., 4) %>%
   kbl() %>%
   kable_material(c("striped", "hover"))
 ```
@@ -151,24 +145,14 @@ The brown triangle represents the football and the red/green circles are the pla
 shows the starting positions of players/football for a kickoff.
 
 # EDA Discussion
-This dashboard helps analyze different plays of NFL game by producing interesting visualizations for various aspects of the game. From the functionality perspective, the dashboard filters on a particular play type right from the landing page of R shiny app. Several functions are written which takes in the selected play type from GUI along with a dataframe containing plays information to produce visualizations. A total of 9 functions are written which produce specific plots using ggplot library.
+This dashboard helps analyze different plays of NFL game by producing interesting visualizations for various aspects of the game. From the functionality perspective, the dashboard filters on a particular play type right from the landing page of R shiny app. Several functions are written which takes in the selected play type from GUI along with a dataframe containing plays information to produce visualizations. A total of 9 functions are written which produce specific plots using ggplot library. These plots are generated and pre-saved in /inst/app/cache/gifs to fetched according to selected plays from GUI.
 
-## Punt
+## Punt/KickOff
+A sample plot for each Punt and KickOff is shown below. The plotting functions plot_kick_result and plot_team_yardage takes in the plays data frame along with play type. The first plot tries to analyze if there is a relation between kick length on the play result for Punt by looking at the box-plot distribution of kick length for results. The second plot explores the median yards gained by opponent team for a kicker team in kickOff. This graph helps locate poor performaing teams for kickOff by looking at high median kick return yards for opponents for various kicking teams.
 ```{r}
-
+plot_kick_result(carolinaKernels::PLAYS,"Punt")
+plot_team_yardage(carolinaKernels::PLAYS,"Kickoff")
 ```
-
-
-## Extra Point
-
-
-
-
-## Field Goal
-
-## Kickoff
-
-
 
 
 
