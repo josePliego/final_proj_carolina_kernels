@@ -30,6 +30,17 @@ mod_03_playvis_ui <- function(id) {
     tags$div(
       class = "gif",
       imageOutput(ns("play_plot"))
+    ),
+    tags$br(),
+    tags$div(
+      h4("About the Animation"),
+      paste(
+        "Each play type (extra point, punt, field goal, and kickoff) are selectable in the dropdown menu.",
+        "The animations are precompiled into gif files to reduce load times and improve user experience.",
+        "Each dot represents a player and the brown triangle is the football.",
+        "White horizontal lines denote the hash marks and the yellow vertical bars represent goal posts.",
+        "Gif file names are shown in the drop down menu and delineate the play type and result separated by underscore.",
+      )
     )
   )
 }
