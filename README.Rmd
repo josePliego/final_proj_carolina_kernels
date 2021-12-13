@@ -22,8 +22,5 @@ Each team has different sets of players involved in special teams functions whic
 
 Our final application allows users to explore various summary statistics for each of the play types and view actual animations for each distinct play outcome built from the player movement file. Download and install to begin exploring our product.
 
-For detailed documentation, install the package and run:
+For detailed documentation, install the package and run: `vignette("carolinaKernels")`.
 
-```{r}
-vignette("carolinaKernels")
-```

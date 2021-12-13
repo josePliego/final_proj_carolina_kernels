@@ -39,9 +39,4 @@ play outcome built from the player movement file. Download and install
 to begin exploring our product.
 
 For detailed documentation, install the package and run:
-
-``` r
-vignette("carolinaKernels")
-```
-
-    ## Warning: vignette 'carolinaKernels' not found
+`vignette("carolinaKernels")`.
