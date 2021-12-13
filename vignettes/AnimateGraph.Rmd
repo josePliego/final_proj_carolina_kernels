@@ -15,8 +15,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, include=FALSE}
+library(carolinaKernels)
 library(ggplot2)
 library(gganimate)
+library(gifski)
 library(tidyverse)
 library(dplyr)
 library(cowplot)
@@ -32,8 +34,8 @@ options(repr.plot.width = 15, repr.plot.height = 10)
 ##
 # plays = read.csv(file = paste(here(),"/data/plays.csv",sep=''), header = TRUE, stringsAsFactors = FALSE)
 # tracking = read.csv(file = paste(here(),"/data/tracking2020.csv",sep=''), header = TRUE, stringsAsFactors = FALSE)
-plays <- readRDS("plays.rds")
-tracking <- readRDS("tracking.rds")
+plays <- PLAYS
+tracking <- TRACKING
 ```
 
 
@@ -152,7 +154,7 @@ create_animation <- function(play_df, gif_filename) {
 
   nFrames <- max(play_df$frameId)
   anim_save(
-    paste(gif_filename, ".gif", sep = ""),
+    here("inst/app/cache/gifs/", paste0(gif_filename, ".gif")),
     animate(anim,
       width = 720, height = 440,
       fps = 7, nframe = nFrames
@@ -262,4 +264,3 @@ for (i in unique(field_goal$game_play_key)) {
   create_animation(play_df, unique(play_df$gif_name))
 }
 ```
-
