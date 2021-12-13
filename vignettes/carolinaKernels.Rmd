@@ -48,22 +48,22 @@ Here, is a sample of the raw data files used in the application for summary stat
 ```{r, sample-nrows}
 # display nicely formatted table with files used for analysis
 carolinaKernels::PFFScoutingData %>%
-  head(., 10) %>%
+  head(., 4) %>%
   kbl() %>%
   kable_material(c("striped", "hover"))
 
 carolinaKernels::PLAYERS %>%
-  head(., 10) %>%
+  head(., 4) %>%
   kbl() %>%
   kable_material(c("striped", "hover"))
 
 carolinaKernels::PLAYS %>%
-  head(., 10) %>%
+  head(., 4) %>%
   kbl() %>%
   kable_material(c("striped", "hover"))
 
 carolinaKernels::TRACKING %>%
-  head(., 10) %>%
+  head(., 4) %>%
   kbl() %>%
   kable_material(c("striped", "hover"))
 ```
