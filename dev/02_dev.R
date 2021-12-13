@@ -32,6 +32,8 @@ usethis::use_data_raw("PFFScoutingData")
 usethis::use_data_raw("PLAYS")
 usethis::use_data_raw("TRACKING")
 
+usethis::use_readme_rmd()
+
 # Engineering
 
 ## Add modules ----
