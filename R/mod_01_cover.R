@@ -39,14 +39,12 @@ mod_01_cover_ui <- function(id) {
             class = "about",
             h4("How to use the app"),
             paste(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-              "Cras ac tincidunt mi. Etiam et porttitor lorem, sed sodales",
-              "tortor. Duis ut aliquet lectus. Nam volutpat posuere dolor non",
-              "fringilla. Donec ac porta dolor. Phasellus malesuada et risus",
-              "eu malesuada. Praesent purus dolor, placerat eget orci ac,",
-              "vehicula fermentum mi. Nam pharetra nulla sed arcu egestas, sit",
-              "amet consequat mauris scelerisque. Proin in tortor leo. In hac",
-              "habitasse platea dictumst."
+              "Choosing a Play Type will lead you to various plots that summarize it",
+              "Use Filters to select an aspect of the Play Type",
+              "And click Show Plot to show the plot of the aspect",
+              "Clicking Play Analysis on the bottom right will lead you to the dynamic visualization of various plays",
+              "Choose a play to see its dynamic visualization",
+              "Press Back to go back to the previous page", sep="\n"
             )
           ),
           tags$br(),
