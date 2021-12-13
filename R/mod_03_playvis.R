@@ -12,22 +12,6 @@ mod_03_playvis_ui <- function(id) {
   tagList(
     uiOutput(ns("header")),
     tags$div(
-      fluidRow(
-        column(4),
-        column(
-          4,
-          class = "cover",
-          align = "center",
-          selectInput(
-            ns("play"),
-            "Choose a play:",
-            choices = list.files(app_sys("app/cache/gifs/"))
-          )
-        ),
-        column(4)
-      )
-    ),
-    tags$div(
       class = "gif",
       imageOutput(ns("play_plot"))
     )
@@ -40,12 +24,39 @@ mod_03_playvis_ui <- function(id) {
 mod_03_playvis_server <- function(id, r) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
+
+    gif_list <- list.files(app_sys("app/cache/gifs/"))
+
+
     output$header <- renderUI({
-      h2(paste(stringr::str_remove(r$play_type, "s$"), "Dynamic Visualization"))
+      tags$div(
+        h2(paste(stringr::str_remove(r$play_type, "s$"), "Dynamic Visualization")),
+        fluidRow(
+          column(4),
+          column(
+            4,
+            class = "cover",
+            align = "center",
+            selectInput(
+              ns("play"),
+              "Choose a play:",
+              choices = stringr::str_remove_all(
+                gif_list[
+                  stringr::str_detect(
+                    gif_list, stringr::str_replace_all(r$play_type, " ", "")
+                  )
+                ],
+                ".gif$"
+              )
+            )
+          ),
+          column(4)
+        )
+      )
     })
     observeEvent(input$play, {
       play <- as.character(input$play)
-      img_dir <- paste0(app_sys("app/cache/gifs/"), "/", input$play)
+      img_dir <- paste0(app_sys("app/cache/gifs/"), "/", input$play, ".gif")
       output$play_plot <- renderImage(
         {
           list("src" = img_dir)
