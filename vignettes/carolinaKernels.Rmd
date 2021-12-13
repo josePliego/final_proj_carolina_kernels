@@ -45,7 +45,7 @@ We also tried to include few reactive elements. An excessive amount of reactive 
 # Raw Data Sample
 Here, is a sample of the raw data files used in the application for summary statistics and visualizations. See /R/data.R for more information.
 
-```{r, sample-nrows}
+```{r, sample-nrows, echo=FALSE}
 # display nicely formatted table with files used for analysis
 carolinaKernels::PFFScoutingData %>%
   head(., 4) %>%
