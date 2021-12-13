@@ -8,7 +8,9 @@ This year participants were asked to investigate special teams play. For those u
 
 Each team has different sets of players involved in special teams functions which are different than regular offensive and defensive rosters. Included in the NFL's data dump was scouting information, player movement for all special teams plays between 2018-2020, and metadata corresponding to each play (time of game, outcome, team, etc.).
 
-Our final application allows users to explore various summary statistics for each of the play types and view actual animations for each distinct play outcome built from the player movement file. Download and install to begin exploring our product. 
+Our final application allows users to explore various summary statistics for each of the play types and view actual animations for each distinct play outcome built from the player movement file. Download and install to begin exploring our product.
+
+See ./doc/carolinaKernels.html for detailed documentation.
 
 
 Statistical Programming - Final Project

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, include=FALSE}
 library(carolinaKernels)
 library(dplyr)
 library(ggplot2)
@@ -43,7 +43,7 @@ In addition to being simple and practical, we also want the app to be visually a
 We also tried to include few reactive elements. An excessive amount of reactive features can make the app slow and the interface overwhelming for the user. The page structure is also helpful in this regard, as including buttons to navigate avoids rendering plots with no reason if the user makes a mistake in the inputs.
 
 # Raw Data Sample
-Here, is a sample of the raw data files used in the application for summary statistics and visualizations. See /R/data.R for more information.
+Here, is a sample of the raw data files used in the application for summary statistics and visualizations. See help function for each of the package data objects for more information.
 
 ```{r, sample-nrows, echo=FALSE}
 # display nicely formatted table with files used for analysis
