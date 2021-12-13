@@ -151,7 +151,7 @@ The brown triangle represents the football and the red/green circles are the pla
 shows the starting positions of players/football for a kickoff.
 
 # EDA Discussion
-This dashboard helps analyze different plays of NFL game by producing interesting visualizations for various aspects of the game. From the functionality perspective, the dashboard filters on a particular play type right from the landing page of R shiny app. Several functions are written which takes in the selected play type from GUI along with a dataframe containing plays information to produce visualizations. A total of 9 functions are written which produce specific plots using ggplot library.
+This dashboard helps analyze different plays of NFL game by producing interesting visualizations for various aspects of the game. From the functionality perspective, the dashboard filters on a particular play type right from the landing page of R shiny app. Several functions are written which takes in the selected play type from GUI along with a dataframe containing plays information to produce visualizations. A total of 9 functions are written which produce specific plots using ggplot library. These plots are generated and pre-saved in /inst/app/cache/gifs to fetched according to selected plays from GUI.
 
 ## Punt
 ```{r}
