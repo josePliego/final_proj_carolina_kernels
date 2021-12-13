@@ -147,22 +147,12 @@ shows the starting positions of players/football for a kickoff.
 # EDA Discussion
 This dashboard helps analyze different plays of NFL game by producing interesting visualizations for various aspects of the game. From the functionality perspective, the dashboard filters on a particular play type right from the landing page of R shiny app. Several functions are written which takes in the selected play type from GUI along with a dataframe containing plays information to produce visualizations. A total of 9 functions are written which produce specific plots using ggplot library. These plots are generated and pre-saved in /inst/app/cache/gifs to fetched according to selected plays from GUI.
 
-## Punt
+## Punt/KickOff
+A sample plot for each Punt and KickOff is shown below. The plotting functions plot_kick_result and plot_team_yardage takes in the plays data frame along with play type. The first plot tries to analyze if there is a relation between kick length on the play result for Punt by looking at the box-plot distribution of kick length for results. The second plot explores the median yards gained by opponent team for a kicker team in kickOff. This graph helps locate poor performaing teams for kickOff by looking at high median kick return yards for opponents for various kicking teams.
 ```{r}
-
+plot_kick_result(carolinaKernels::PLAYS,"Punt")
+plot_team_yardage(carolinaKernels::PLAYS,"Kickoff")
 ```
-
-
-## Extra Point
-
-
-
-
-## Field Goal
-
-## Kickoff
-
-
 
 
 
