@@ -13,7 +13,7 @@ plot_down_kick(df, playType)
 Punt.}
 }
 \value{
-A ggplot figure containing kick length v/s down comparison
+A ggplot figure containing kick length vs down comparison
 }
 \description{
 Kick Length By Down Plots

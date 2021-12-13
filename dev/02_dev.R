@@ -28,11 +28,11 @@ golem::add_module(name = "00_main")
 golem::add_module(name = "01_cover")
 golem::add_module(name = "02_playtype")
 golem::add_module(name = "03_playvis")
-golem::add_module(name = "04_summaries")
-golem::add_module(name = "05_plots")
+golem::add_module(name = "04_plots")
 
 ## Add helper functions ----
 usethis::use_r("theme_carKer")
+usethis::use_r("make_plot_list")
 
 ## External resources
 ## Creates .css file at inst/app/www

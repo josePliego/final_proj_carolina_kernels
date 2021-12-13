@@ -22,8 +22,6 @@ plot_kick_playType <- function(df, playType) {
 
 }
 
-
-
 #' Kick Length Distribution By Play Result Plots
 #'
 #' @param df A dataframe containing information on NFL plays
@@ -56,8 +54,6 @@ plot_kick_result <- function(df, playType) {
   return(fig)
 
 }
-
-
 
 #' Yards Gained By Play Result Plots
 #'
@@ -94,7 +90,6 @@ plot_results <- function(df, playType) {
 
 }
 
-
 #' Yards Gained vs Kick Length Plots
 #'
 #' @param df A dataframe containing information on NFL plays
@@ -123,8 +118,6 @@ plot_kick_playResult <- function(df, playType) {
 
 }
 
-
-
 #' Kick Length By Down Plots
 #'
 #' @param df A dataframe containing information on NFL plays
@@ -151,8 +144,6 @@ plot_down_kick <- function(df, playType) {
   return(fig)
 
 }
-
-
 
 #' Return Yards By Opponent Teams Plots
 #'
@@ -190,8 +181,6 @@ plot_team_yardage <- function(df, playType) {
 
 }
 
-
-
 #' Hang Time Plots
 #'
 #' @param df A dataframe containing information on NFL plays
@@ -218,8 +207,6 @@ plot_hangTime <- function(df, playType) {
 
 }
 
-
-
 #' Correct Snaps By Punter Plot
 #'
 #' @param df A dataframe containing information on NFL plays
@@ -241,12 +228,12 @@ plot_top_punters <- function(df, playType) {
     dplyr::arrange(dplyr::desc(.data$correctPunt)) %>%
     dplyr::left_join(
       PLAYERS %>%
-        select(kickerId = .data$nflId, .data$displayName),
+        dplyr::select(kickerId = .data$nflId, .data$displayName),
       by = c("kickerId")
       ) %>%
     dplyr::slice(1:10) %>%
     ggplot2::ggplot(
-      aes(
+      ggplot2::aes(
         y = reorder(.data$displayName, .data$correctPunt),
         x = .data$correctPunt)
       ) +
@@ -262,8 +249,6 @@ plot_top_punters <- function(df, playType) {
   return(fig)
 
 }
-
-
 
 #' Accurate Kicks By Kicker Plots
 #'

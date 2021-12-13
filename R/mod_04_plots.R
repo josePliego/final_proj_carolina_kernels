@@ -1,4 +1,4 @@
-#' 04_summaries UI Function
+#' 04_plots UI Function
 #'
 #' @description A shiny Module.
 #'
@@ -7,27 +7,29 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_04_summaries_ui <- function(id) {
+mod_04_plots_ui <- function(id) {
   ns <- NS(id)
   tagList(
     tags$div(
-      tableOutput(ns("table"))
+      plotOutput(ns("sum_plot"))
     )
   )
 }
 
-#' 04_summaries Server Functions
+#' 04_plots Server Functions
 #'
 #' @noRd
-mod_04_summaries_server <- function(id) {
+mod_04_plots_server <- function(id, r) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
-    output$table <- renderTable(shinipsum::random_table(10, 5))
+    output$sum_plot <- renderPlot({
+      getPlot_kick_result(PLAYS, stringr::str_remove(r$play_type, "s$"))
+    })
   })
 }
 
 ## To be copied in the UI
-# mod_04_summaries_ui("04_summaries_ui_1")
+# mod_04_plots_ui("04_plots_ui_1")
 
 ## To be copied in the server
-# mod_04_summaries_server("04_summaries_ui_1")
+# mod_04_plots_server("04_plots_ui_1")

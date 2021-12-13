@@ -13,7 +13,7 @@ plot_results(df, playType)
 Punt.}
 }
 \value{
-A ggplot figure containing specialTeamsResult v/s playResult
+A ggplot figure containing specialTeamsResult vs playResult
   comparison
 }
 \description{
