@@ -39,7 +39,7 @@ mod_03_playvis_ui <- function(id) {
         "The animations are precompiled into gif files to reduce load times and improve user experience.",
         "Each dot represents a player and the brown triangle is the football.",
         "White horizontal lines denote the hash marks and the yellow vertical bars represent goal posts.",
-        "Gif file names are shown in the drop down menu and delineate the play type and result separated by underscore.",
+        "Gif file names are shown in the drop down menu and delineate the play type and result separated by underscore."
       )
     )
   )
