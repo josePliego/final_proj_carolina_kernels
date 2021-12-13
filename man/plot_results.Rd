@@ -9,10 +9,12 @@ plot_results(df, playType)
 \arguments{
 \item{df}{A dataframe containing information on NFL plays}
 
-\item{playType}{One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.}
+\item{playType}{One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+Punt.}
 }
 \value{
-A ggplot figure containing specialTeamsResult v/s playResult comparison
+A ggplot figure containing specialTeamsResult v/s playResult
+  comparison
 }
 \description{
 Yards Gained By Play Result Plots

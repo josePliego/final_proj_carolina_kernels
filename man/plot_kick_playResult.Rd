@@ -2,18 +2,19 @@
 % Please edit documentation in R/summary_plots.R
 \name{plot_kick_playResult}
 \alias{plot_kick_playResult}
-\title{Title}
+\title{Yards Gained vs Kick Length Plots}
 \usage{
 plot_kick_playResult(df, playType)
 }
 \arguments{
 \item{df}{A dataframe containing information on NFL plays}
 
-\item{playType}{One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.}
+\item{playType}{One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+Punt.}
 }
 \value{
 A ggplot figure containing kick length v/s playResult comparison
 }
 \description{
-Title
+Yards Gained vs Kick Length Plots
 }

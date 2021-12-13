@@ -2,18 +2,20 @@
 % Please edit documentation in R/summary_plots.R
 \name{plot_team_yardage}
 \alias{plot_team_yardage}
-\title{Title}
+\title{Return Yards By Opponent Teams Plots}
 \usage{
 plot_team_yardage(df, playType)
 }
 \arguments{
 \item{df}{A dataframe containing information on NFL plays}
 
-\item{playType}{One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.}
+\item{playType}{One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+Punt.}
 }
 \value{
-A ggplot figure containing kickReturnYardage v/s possessionTeam comparison
+A ggplot figure containing kickReturnYardage v/s possessionTeam
+  comparison
 }
 \description{
-Title
+Return Yards By Opponent Teams Plots
 }
