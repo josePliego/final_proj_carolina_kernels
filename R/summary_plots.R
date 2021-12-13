@@ -227,7 +227,7 @@ plot_top_punters <- function(df, playType) {
       ) %>%
     dplyr::arrange(dplyr::desc(.data$correctPunt)) %>%
     dplyr::left_join(
-      PLAYERS %>%
+      carolinaKernels::PLAYERS %>%
         dplyr::select(kickerId = .data$nflId, .data$displayName),
       by = c("kickerId")
       ) %>%
@@ -272,7 +272,7 @@ plot_top_kickers <- function(df, playType) {
       ) %>%
     dplyr::arrange(dplyr::desc(.data$kickAccuracy)) %>%
     dplyr::left_join(
-      PLAYERS %>%
+      carolinaKernels::PLAYERS %>%
         dplyr::select(kickerId = .data$nflId, .data$displayName),
       by = c("kickerId")
       ) %>%
@@ -340,7 +340,7 @@ plot_extra_point <- function(df, plot_type = "Distribution") {
       ) %>%
       dplyr::arrange(dplyr::desc(.data$accuracy)) %>%
       dplyr::left_join(
-        PLAYERS %>%
+        carolinaKernels::PLAYERS %>%
           dplyr::select(kickerId = .data$nflId, .data$displayName),
         by = c("kickerId")
       ) %>%
@@ -372,7 +372,7 @@ plot_extra_point <- function(df, plot_type = "Distribution") {
       ) %>%
       dplyr::arrange(dplyr::desc(.data$accuracy)) %>%
       dplyr::left_join(
-        PLAYERS %>%
+        carolinaKernels::PLAYERS %>%
           dplyr::select(kickerId = .data$nflId, .data$displayName),
         by = c("kickerId")
       ) %>%

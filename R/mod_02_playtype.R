@@ -32,9 +32,9 @@ mod_02_playtype_server <- function(id, r) {
     ns <- session$ns
 
     observe({
-      r$dt <- PLAYS %>%
+      r$dt <- carolinaKernels::PLAYS %>%
         dplyr::left_join(
-          PFFScoutingData %>%
+          carolinaKernels::PFFScoutingData %>%
             dplyr::select(
               .data$gameId,
               .data$playId,
