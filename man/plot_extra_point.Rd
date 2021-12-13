@@ -4,12 +4,12 @@
 \alias{plot_extra_point}
 \title{Extra Points Plots}
 \usage{
-plot_extra_point(df, plot_type = "distribution")
+plot_extra_point(df, plot_type = "Distribution")
 }
 \arguments{
 \item{df}{A dataframe containing information on NFL plays}
 
-\item{plot_type}{Plot one of distribution, successful or unsuccesful}
+\item{plot_type}{Plot one of Distribution, Successful or Unsuccesful}
 }
 \value{
 A ggplot figure containing extra point plots

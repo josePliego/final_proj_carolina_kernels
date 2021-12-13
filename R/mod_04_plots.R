@@ -23,7 +23,7 @@ mod_04_plots_server <- function(id, r) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
     output$sum_plot <- renderPlot({
-      getPlot_kick_result(PLAYS, stringr::str_remove(r$play_type, "s$"))
+      get_plot(r$dt, r$play_type, r$plot_selection)
     })
   })
 }

@@ -34,6 +34,7 @@ golem::add_module(name = "04_plots")
 ## Add helper functions ----
 usethis::use_r("theme_carKer")
 usethis::use_r("make_plot_list")
+usethis::use_r("get_plot")
 
 ## External resources
 ## Creates .css file at inst/app/www

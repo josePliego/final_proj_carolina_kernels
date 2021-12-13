@@ -68,7 +68,7 @@ mod_01_cover_server <- function(id, r) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
     observeEvent(input$go, {
-      r$play_type <- as.character(stringr::str_remove(r$play_type, "s$"))
+      r$play_type <- as.character(stringr::str_remove(input$choice, "s$"))
       r$pag <- 1
     })
   })
