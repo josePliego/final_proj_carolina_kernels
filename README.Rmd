@@ -3,8 +3,6 @@ output: github_document
 title: "Carolina Kernels - Final Project"
 ---
 
-# Carolina Kernels - Final Project
-
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
@@ -24,4 +22,8 @@ Each team has different sets of players involved in special teams functions whic
 
 Our final application allows users to explore various summary statistics for each of the play types and view actual animations for each distinct play outcome built from the player movement file. Download and install to begin exploring our product.
 
-See ./doc/carolinaKernels.html for detailed documentation.
+For detailed documentation, install the package and run:
+
+```{r}
+vignette("carolinaKernels")
+```

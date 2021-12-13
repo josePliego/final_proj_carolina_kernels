@@ -1,8 +1,6 @@
 Carolina Kernels - Final Project
 ================
 
-# Carolina Kernels - Final Project
-
 <!-- badges: start -->
 
 [![Lifecycle:
@@ -40,4 +38,10 @@ for each of the play types and view actual animations for each distinct
 play outcome built from the player movement file. Download and install
 to begin exploring our product.
 
-See ./doc/carolinaKernels.html for detailed documentation.
+For detailed documentation, install the package and run:
+
+``` r
+vignette("carolinaKernels")
+```
+
+    ## Warning: vignette 'carolinaKernels' not found
