@@ -39,12 +39,12 @@ mod_01_cover_ui <- function(id) {
             class = "about",
             h4("How to use the app"),
             paste(
-              "Choosing a Play Type will lead you to various plots that summarize it",
-              "Use Filters to select an aspect of the Play Type",
-              "And click Show Plot to show the plot of the aspect",
-              "Clicking Play Analysis on the bottom right will lead you to the dynamic visualization of various plays",
-              "Choose a play to see its dynamic visualization",
-              "Press Back to go back to the previous page", sep="\n"
+              "Choosing a Play Type will lead you to various plots that summarize it.",
+              "Use Filters to select an aspect of the Play Type ",
+              "and click Show Plot to show the plot of the aspect.",
+              "Clicking Play Analysis on the bottom right will lead you to the dynamic visualization of various plays.",
+              "Choose a play to see its dynamic visualization.",
+              "Press Back to go back to the previous page", sep='\n'
             )
           ),
           tags$br(),
