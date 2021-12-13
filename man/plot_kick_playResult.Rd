@@ -13,7 +13,7 @@ plot_kick_playResult(df, playType)
 Punt.}
 }
 \value{
-A ggplot figure containing kick length v/s playResult comparison
+A ggplot figure containing kick length vs playResult comparison
 }
 \description{
 Yards Gained vs Kick Length Plots

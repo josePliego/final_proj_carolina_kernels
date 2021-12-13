@@ -13,7 +13,7 @@ plot_team_yardage(df, playType)
 Punt.}
 }
 \value{
-A ggplot figure containing kickReturnYardage v/s possessionTeam
+A ggplot figure containing kickReturnYardage vs possessionTeam
   comparison
 }
 \description{
