@@ -120,6 +120,7 @@ sample_play %>% filter(frameId == 1) %>%
   # sideline
   annotate("segment",x=0, y=c(0, 53.33), xend=120, yend=c(0, 53.33), lwd=1.3, col="black") +
   # denote 50yd, 30yd, 10yd line with text
+  
   annotate("text", label=50, x=60, y=10, color="black", size=5) + 
   annotate("text", label=30, x=80, y=6, color="black", size=5) + 
   annotate("text", label=10, x=100, y=2, color="black", size=5) + 
@@ -148,6 +149,7 @@ and the white horizontal lines are the hash marks.
 
 The brown triangle represents the football and the red/green circles are the players. The chart above
 shows the starting positions of players/football for a kickoff.
+
 
 
 # EDA Discussion
