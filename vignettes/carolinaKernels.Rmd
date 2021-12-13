@@ -55,17 +55,11 @@ Here, is a sample of the raw data files used in the application:
 
 
 # Feature - Animated Graphs
-One of the unique aspects of this dataset is the location tracking. The NFL embeds microchips in the
-game ball and shoulder pads of every player. Every 0.1 seconds these chips record dynamic spatial information
-such as X/Y location, orientation, and velocity.
+One of the unique aspects of this dataset is the location tracking. The NFL embeds microchips in the game ball and shoulder pads of every player. Every 0.1 seconds these chips record dynamic spatial information such as X/Y location, orientation, and velocity.
 
-In order to show CarolinaKernel end users how granular the NFL's location data is a series of animated
-play diagrams were created. These charts show player movement over the course of a play using the (X,Y)
-coordinates and timestamps from the raw tracking data. Using the play metadata information, one play
-for each special teams play category and play outcome were selected.
+In order to show CarolinaKernel end users how granular the NFL's location data is a series of animated play diagrams were created. These charts show player movement over the course of a play using the (X,Y) coordinates and timestamps from the raw tracking data. Using the play metadata information, one play for each special teams play category and play outcome were selected.
 
-A user defined function renders static png files for each of the timestamps and the gganimate library 
-stiches the individual files into a final gif for application embedding.
+A user defined function renders static png files for each of the timestamps and the gganimate library stiches the individual files into a final gif for application embedding.
 
 Here is an example of one of the plots stored as a png file:
 
@@ -120,13 +114,9 @@ sample_play %>% filter(frameId == 1) %>%
   geom_point(aes(x = x, y = y, color = team, shape = is_football), size = 3)
 ```
 
-To show the player position relative to important field attributes, such as the end zone and goal posts,
-the scatter plots were overlayed on an actual field geometry. The yellow bars on each end represent 
-the field goal posts. The numbering represents along the top and bottom represent the yard lines
-and the white horizontal lines are the hash marks. 
+To show the player position relative to important field attributes, such as the end zone and goal posts, the scatter plots were overlayed on an actual field geometry. The yellow bars on each end represent the field goal posts. The numbering represents along the top and bottom represent the yard lines and the white horizontal lines are the hash marks. 
 
-The brown triangle represents the football and the red/green circles are the players. The chart above
-is shows the starting positions for a kickoff.
+The brown triangle represents the football and the red/green circles are the players. The chart above is shows the starting positions for a kickoff.
 
 
 # EDA Discussion
