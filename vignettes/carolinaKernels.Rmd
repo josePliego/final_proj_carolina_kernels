@@ -150,10 +150,23 @@ and the white horizontal lines are the hash marks.
 The brown triangle represents the football and the red/green circles are the players. The chart above
 shows the starting positions of players/football for a kickoff.
 
-
-
 # EDA Discussion
 
+
+## Punt
+```{r}
+
+```
+
+
+## Extra Point
+
+
+
+
+## Field Goal
+
+## Kickoff
 
 
 

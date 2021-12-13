@@ -20,7 +20,7 @@ mod_01_cover_ui <- function(id) {
           h1("Carolina Kernels Final Project"),
           selectInput(
             ns("choice"),
-            label = "Choose a play type to analize:",
+            label = "Choose a Play Type to Analyze:",
             choices = list(
               "Field Goals",
               "Extra Points",
