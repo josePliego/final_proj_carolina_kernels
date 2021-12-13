@@ -44,7 +44,7 @@ mod_01_cover_ui <- function(id) {
               "And click Show Plot to show the plot of the aspect",
               "Clicking Play Analysis on the bottom right will lead you to the dynamic visualization of various plays",
               "Choose a play to see its dynamic visualization",
-              "Press Back to go back to the previous page"
+              "Press Back to go back to the previous page", sep="\n"
             )
           ),
           tags$br(),
