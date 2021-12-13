@@ -2,18 +2,19 @@
 % Please edit documentation in R/summary_plots.R
 \name{plot_down_kick}
 \alias{plot_down_kick}
-\title{Title}
+\title{Kick Length By Down Plots}
 \usage{
 plot_down_kick(df, playType)
 }
 \arguments{
 \item{df}{A dataframe containing information on NFL plays}
 
-\item{playType}{One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.}
+\item{playType}{One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+Punt.}
 }
 \value{
 A ggplot figure containing kick length v/s down comparison
 }
 \description{
-Title
+Kick Length By Down Plots
 }

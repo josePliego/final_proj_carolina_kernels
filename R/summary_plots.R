@@ -62,9 +62,11 @@ plot_kick_result <- function(df, playType) {
 #' Yards Gained By Play Result Plots
 #'
 #' @param df A dataframe containing information on NFL plays
-#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.
+#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+#'   Punt.
 #'
-#' @return A ggplot figure containing specialTeamsResult v/s playResult comparison
+#' @return A ggplot figure containing specialTeamsResult vs playResult
+#'   comparison
 #' @export
 #'
 plot_results <- function(df, playType) {
@@ -93,12 +95,13 @@ plot_results <- function(df, playType) {
 }
 
 
-#' Title
+#' Yards Gained vs Kick Length Plots
 #'
 #' @param df A dataframe containing information on NFL plays
-#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.
+#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+#'   Punt.
 #'
-#' @return A ggplot figure containing kick length v/s playResult comparison
+#' @return A ggplot figure containing kick length vs playResult comparison
 #' @export
 #'
 plot_kick_playResult <- function(df, playType) {
@@ -122,109 +125,188 @@ plot_kick_playResult <- function(df, playType) {
 
 
 
-#' Title
+#' Kick Length By Down Plots
 #'
 #' @param df A dataframe containing information on NFL plays
-#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.
+#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+#'   Punt.
 #'
-#' @return A ggplot figure containing kick length v/s down comparison
+#' @return A ggplot figure containing kick length vs down comparison
 #' @export
 #'
 plot_down_kick <- function(df, playType) {
+
   fig <- df %>%
-    filter(specialTeamsPlayType == playType) %>%
-    select(down, kickLength) %>%
-    ggplot(aes(x = factor(down), y = kickLength, fill = factor(down))) +
-    geom_boxplot(position = "dodge", alpha = 0.5) +
-    theme(legend.position = "none") +
-    labs(x = "down")
+    dplyr::filter(.data$specialTeamsPlayType == playType) %>%
+    dplyr::select(.data$down, .data$kickLength) %>%
+    tidyr::drop_na() %>%
+    ggplot2::ggplot(
+      ggplot2::aes(x = factor(.data$down), y = .data$kickLength)
+      ) +
+    ggplot2::geom_boxplot(position = "dodge", fill = "antiquewhite") +
+    ggplot2::labs(x = "Down", y = "Yards", title = "KICK LENGTH BY DOWN") +
+    theme_carKer() +
+    ggplot2::theme(legend.position = "none")
+
   return(fig)
+
 }
 
 
 
-#' Title
+#' Return Yards By Opponent Teams Plots
 #'
 #' @param df A dataframe containing information on NFL plays
-#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.
+#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+#'   Punt.
 #'
-#' @return A ggplot figure containing kickReturnYardage v/s possessionTeam comparison
+#' @return A ggplot figure containing kickReturnYardage vs possessionTeam
+#'   comparison
 #' @export
 #'
 plot_team_yardage <- function(df, playType) {
+
   fig <- df %>%
-    filter(specialTeamsPlayType == playType) %>%
-    group_by(possessionTeam) %>%
-    summarize(kickReturnYardage = median(kickReturnYardage, na.rm = TRUE)) %>%
-    arrange(desc(kickReturnYardage)) %>%
-    ggplot(aes(y = reorder(possessionTeam, kickReturnYardage), x = kickReturnYardage)) +
-    geom_bar(stat = "identity", fill = "blue") +
-    labs(y = "Possession Team")
+    dplyr::filter(specialTeamsPlayType == playType) %>%
+    dplyr::group_by(possessionTeam) %>%
+    dplyr::summarise(
+      kickReturnYardage = median(kickReturnYardage, na.rm = TRUE)
+      ) %>%
+    dplyr::arrange(dplyr::desc(kickReturnYardage)) %>%
+    tidyr::drop_na() %>%
+    ggplot2::ggplot(
+      ggplot2::aes(
+        y = reorder(possessionTeam, kickReturnYardage),
+        x = kickReturnYardage)
+      ) +
+    ggplot2::geom_bar(stat = "identity", fill = "antiquewhite") +
+    ggplot2::labs(
+      y = "", x = "Yards", title = "MEDIAN KICK RETURN YARDS BY OPPONENT TEAMS"
+      ) +
+    ggplot2::scale_x_continuous(expand = c(0, 0.1)) +
+    theme_carKer()
+
   return(fig)
+
 }
 
 
 
-#' Title
+#' Hang Time Plots
 #'
 #' @param df A dataframe containing information on NFL plays
-#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.
+#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+#'   Punt.
 #'
 #' @return A ggplot figure containing histogram of hangTime
 #' @export
 #'
 plot_hangTime <- function(df, playType) {
+
   fig <- df %>%
-    filter(specialTeamsPlayType == playType) %>%
-    ggplot(aes(x = hangTime, y = ..density..)) +
-    geom_histogram(fill = "blue")
+    dplyr::filter(.data$specialTeamsPlayType == playType) %>%
+    dplyr::select(.data$hangTime) %>%
+    tidyr::drop_na() %>%
+    ggplot2::ggplot(ggplot2::aes(x = .data$hangTime, y = ..density..)) +
+    ggplot2::geom_histogram(fill = "antiquewhite", binwidth = 0.1) +
+    ggplot2::labs(
+      x = "Seconds", y = "", title = "KICK HANG TIME DISTRIBUTION"
+      ) +
+    theme_carKer()
+
   return(fig)
+
 }
 
 
 
-#' Title
+#' Correct Snaps By Punter Plot
 #'
 #' @param df A dataframe containing information on NFL plays
-#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.
+#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+#'   Punt.
 #'
 #' @return A ggplot figure containing top Punter players
 #' @export
 #'
-plot_topPunters <- function(df, playType) {
+plot_top_punters <- function(df, playType) {
+
   fig <- df %>%
-    filter(specialTeamsPlayType == playType) %>%
-    group_by(kickerId) %>%
-    summarize(correctPunt = sum(snapDetail == "OK", na.rm = TRUE), tot = n()) %>%
-    arrange(desc(correctPunt)) %>%
-    left_join(PLAYERS %>% select(kickerId = nflId, displayName), by = c("kickerId")) %>%
-    slice(1:10) %>%
-    ggplot(aes(y = reorder(displayName, correctPunt), x = correctPunt)) +
-    geom_bar(stat = "identity", fill = "blue") +
-    labs(y = "Player")
+    dplyr::filter(.data$specialTeamsPlayType == playType) %>%
+    dplyr::group_by(.data$kickerId) %>%
+    dplyr::summarise(
+      correctPunt = sum(.data$snapDetail == "OK", na.rm = TRUE),
+      tot = dplyr::n()
+      ) %>%
+    dplyr::arrange(dplyr::desc(.data$correctPunt)) %>%
+    dplyr::left_join(
+      PLAYERS %>%
+        select(kickerId = .data$nflId, .data$displayName),
+      by = c("kickerId")
+      ) %>%
+    dplyr::slice(1:10) %>%
+    ggplot2::ggplot(
+      aes(
+        y = reorder(.data$displayName, .data$correctPunt),
+        x = .data$correctPunt)
+      ) +
+    ggplot2::geom_bar(stat = "identity", fill = "antiquewhite") +
+    ggplot2::labs(
+      y = "",
+      x = "Correct Snaps",
+      title = "NUMBER OF CORRECT SNAPS BY PUNTER"
+      ) +
+    ggplot2::scale_x_continuous(expand = c(0, 1)) +
+    theme_carKer()
+
   return(fig)
+
 }
 
 
 
-#' Title
+#' Accurate Kicks By Kicker Plots
 #'
 #' @param df A dataframe containing information on NFL plays
-#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or Punt.
+#' @param playType One of the NFL playtypes Extra Point, Field Goal, Kickoff or
+#'   Punt.
 #'
 #' @return A ggplot figure containing top players with accurate kicks
 #' @export
 #'
-plot_topKickers <- function(df, playType) {
+plot_top_kickers <- function(df, playType) {
+
   fig <- df %>%
-    filter(specialTeamsPlayType == playType) %>%
-    group_by(kickerId) %>%
-    summarize(kickAccuracy = sum(kickDirectionIntended == kickDirectionActual, na.rm = TRUE), tot = n()) %>%
-    arrange(desc(kickAccuracy)) %>%
-    left_join(PLAYERS %>% select(kickerId = nflId, displayName), by = c("kickerId")) %>%
-    slice(1:10) %>%
-    ggplot(aes(y = reorder(displayName, kickAccuracy), x = kickAccuracy)) +
-    geom_bar(stat = "identity", fill = "blue") +
-    labs(x = "Accurate Kicks", y = "Player")
+    dplyr::filter(.data$specialTeamsPlayType == playType) %>%
+    dplyr::group_by(.data$kickerId) %>%
+    dplyr::summarise(
+      kickAccuracy = sum(
+        .data$kickDirectionIntended == .data$kickDirectionActual, na.rm = TRUE
+        ),
+      tot = dplyr::n()
+      ) %>%
+    dplyr::arrange(dplyr::desc(.data$kickAccuracy)) %>%
+    dplyr::left_join(
+      PLAYERS %>%
+        dplyr::select(kickerId = .data$nflId, .data$displayName),
+      by = c("kickerId")
+      ) %>%
+    dplyr::slice(1:10) %>%
+    ggplot2::ggplot(
+      ggplot2::aes(
+        y = reorder(.data$displayName, .data$kickAccuracy),
+        x = .data$kickAccuracy
+        )
+      ) +
+    ggplot2::geom_bar(stat = "identity", fill = "antiquewhite") +
+    ggplot2::labs(
+      x = "Accurate Kicks",
+      y = "",
+      title = "NUMBER OF ACCURATE KICKS BY KICKER"
+      ) +
+    ggplot2::scale_x_continuous(expand = c(0, 1)) +
+    theme_carKer()
+
   return(fig)
+
 }

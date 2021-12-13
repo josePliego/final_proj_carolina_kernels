@@ -1,5 +1,5 @@
 library(readr)
 
-PLAYERS <- read_csv("data-raw/plays.csv")
+PLAYERS <- read_csv("data-raw/players.csv")
 
-usethis::use_data(PLAYERS)
+usethis::use_data(PLAYERS, overwrite = TRUE)

@@ -16,25 +16,33 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(carolinaKernels)
-library(dplyr)
-library(ggplot2)
 library(tidyverse)
 
 plays <- PLAYS
 pff <- PFFScoutingData
 
 plays <- plays %>%
-  left_join(pff %>% select(gameId,playId,snapDetail,
-                           kickDirectionIntended,kickDirectionActual,hangTime),
-            by=c("gameId","playId"),snapDetail=snapDetail)
+  left_join(
+    pff %>%
+      select(
+        gameId,
+        playId,
+        snapDetail,
+        kickDirectionIntended,
+        kickDirectionActual,
+        hangTime
+        ),
+    by = c("gameId","playId"),
+    snapDetail = snapDetail
+    )
 
-getPlot_kick_playType(plays,"Punt")
-getPlot_kick_result(plays,"Punt")
-getPlot_results(plays,"Punt")
-getPlot_kick_playResult(plays,"Punt")
-getPlot_down_kick(plays,"Punt")
-getPlot_team_yardage(plays,"Punt")
-getPlot_hangTime(plays,"Punt")
-getPlot_topPunters(plays,"Punt")
-getPlot_topKickers(plays,"Punt")
+plot_kick_playType(plays,"Punt")
+plot_kick_result(plays,"Punt")
+plot_results(plays,"Punt")
+plot_kick_playResult(plays,"Punt")
+plot_down_kick(plays,"Field Goal")
+plot_team_yardage(plays,"Punt")
+plot_hangTime(plays,"Punt")
+plot_top_punters(plays,"Punt")
+plot_top_kickers(plays,"Punt")
 ```
