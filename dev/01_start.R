@@ -13,7 +13,7 @@
 
 ## Create Common Files ----
 usethis::use_mit_license()  # MIT license
-usethis::use_lifecycle_badge("Experimental")
+usethis::use_lifecycle_badge("stable")
 
 # go to dev/02_dev.R
-rstudioapi::navigateToFile( "dev/02_dev.R" )
+rstudioapi::navigateToFile("dev/02_dev.R")

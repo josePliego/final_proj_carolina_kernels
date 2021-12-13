@@ -9,7 +9,7 @@ A data frame with 19979 rows and 25 variables: \describe{
   \item{gameId}{Game identifier, unique} \item{playId}{Play identifier, not
   unique across games} \item{playDescription}{Description of play}
   \item{quarter}{Game quarter} \item{down}{down} \item{yardsToGo}{Distance
-  needed for a first down} \item{Distance needed for a first down}{Team
+  needed for a first down} \item{possessionTeam}{Team
   punting, placekicking or kicking off the ball}
   \item{specialTeamsPlayType}{Formation of play: Extra Point, Field Goal,
   Kickoff or Punt} \item{specialTeamsResult}{Special Teams outcome of play
@@ -26,7 +26,7 @@ A data frame with 19979 rows and 25 variables: \describe{
   \item{penaltyCodes}{ NFL categorization of the penalties that occurred on
   the play. A standard penalty code followed by a d means the penalty was on
   the defense. Multiple penalties on a play are separated by a}
-  \item{penaltyJerseyNumber}{Jersey number and team code of the player
+  \item{penaltyJerseyNumbers}{Jersey number and team code of the player
   committing each penalty. Multiple penalties on a play are separated by a }
   \item{penaltyYards}{yards gained by possessionTeam by penalty}
   \item{preSnapHomeScore}{Home score prior to the play}

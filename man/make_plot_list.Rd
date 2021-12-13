@@ -15,6 +15,3 @@ A list with plots available.
 \description{
 Plot List By Playtype
 }
-\examples{
-make_plot_list()
-}

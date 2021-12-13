@@ -11,7 +11,7 @@ plot_kick_playType <- function(df, playType) {
 
   fig <- df %>%
     dplyr::filter(.data$specialTeamsPlayType == playType) %>%
-    dplyr::select(.data$specialTeamsPlayType, kickLength) %>%
+    dplyr::select(.data$specialTeamsPlayType, .data$kickLength) %>%
     tidyr::drop_na() %>%
     ggplot2::ggplot(ggplot2::aes(x = .data$kickLength, y = ..density..)) +
     ggplot2::geom_histogram(fill = "antiquewhite", binwidth = 2) +
@@ -41,7 +41,7 @@ plot_kick_result <- function(df, playType) {
     ggplot2::ggplot(
       ggplot2::aes(
         x = .data$kickLength,
-        y = reorder(.data$specialTeamsResult, .data$kickLength)
+        y = stats::reorder(.data$specialTeamsResult, .data$kickLength)
         )
       ) +
     ggplot2::geom_boxplot(fill = "antiquewhite") +
@@ -74,7 +74,7 @@ plot_results <- function(df, playType) {
     ggplot2::ggplot(
       ggplot2::aes(
         x = .data$playResult,
-        y = reorder(.data$specialTeamsResult, .data$playResult)
+        y = stats::reorder(.data$specialTeamsResult, .data$playResult)
         )
       ) +
     ggplot2::geom_boxplot(fill = "antiquewhite") +
@@ -158,17 +158,17 @@ plot_down_kick <- function(df, playType) {
 plot_team_yardage <- function(df, playType) {
 
   fig <- df %>%
-    dplyr::filter(specialTeamsPlayType == playType) %>%
-    dplyr::group_by(possessionTeam) %>%
+    dplyr::filter(.data$specialTeamsPlayType == playType) %>%
+    dplyr::group_by(.data$possessionTeam) %>%
     dplyr::summarise(
-      kickReturnYardage = median(kickReturnYardage, na.rm = TRUE)
+      kickReturnYardage = stats::median(.data$kickReturnYardage, na.rm = TRUE)
       ) %>%
-    dplyr::arrange(dplyr::desc(kickReturnYardage)) %>%
+    dplyr::arrange(dplyr::desc(.data$kickReturnYardage)) %>%
     tidyr::drop_na() %>%
     ggplot2::ggplot(
       ggplot2::aes(
-        y = reorder(possessionTeam, kickReturnYardage),
-        x = kickReturnYardage)
+        y = stats::reorder(.data$possessionTeam, .data$kickReturnYardage),
+        x = .data$kickReturnYardage)
       ) +
     ggplot2::geom_bar(stat = "identity", fill = "antiquewhite") +
     ggplot2::labs(
@@ -234,7 +234,7 @@ plot_top_punters <- function(df, playType) {
     dplyr::slice(1:10) %>%
     ggplot2::ggplot(
       ggplot2::aes(
-        y = reorder(.data$displayName, .data$correctPunt),
+        y = stats::reorder(.data$displayName, .data$correctPunt),
         x = .data$correctPunt)
       ) +
     ggplot2::geom_bar(stat = "identity", fill = "antiquewhite") +
@@ -279,7 +279,7 @@ plot_top_kickers <- function(df, playType) {
     dplyr::slice(1:10) %>%
     ggplot2::ggplot(
       ggplot2::aes(
-        y = reorder(.data$displayName, .data$kickAccuracy),
+        y = stats::reorder(.data$displayName, .data$kickAccuracy),
         x = .data$kickAccuracy
         )
       ) +
@@ -314,10 +314,10 @@ plot_extra_point <- function(df, plot_type = "Distribution") {
       dplyr::select(.data$specialTeamsResult) %>%
       tidyr::drop_na() %>%
       dplyr::count(.data$specialTeamsResult) %>%
-      dplyr::mutate(across(n, ~.x/sum(.x))) %>%
+      dplyr::mutate(dplyr::across(.data$n, ~.x/sum(.x))) %>%
       ggplot2::ggplot(
         ggplot2::aes(
-          x = reorder(.data$specialTeamsResult, -.data$n),
+          x = stats::reorder(.data$specialTeamsResult, -.data$n),
           y = .data$n
           )
       ) +
@@ -347,7 +347,7 @@ plot_extra_point <- function(df, plot_type = "Distribution") {
       dplyr::slice(1:10) %>%
       ggplot2::ggplot(
         ggplot2::aes(
-          y = reorder(.data$displayName, .data$accuracy),
+          y = stats::reorder(.data$displayName, .data$accuracy),
           x = .data$accuracy
         )
       ) +
@@ -379,7 +379,7 @@ plot_extra_point <- function(df, plot_type = "Distribution") {
       dplyr::slice(1:10) %>%
       ggplot2::ggplot(
         ggplot2::aes(
-          y = reorder(.data$displayName, .data$accuracy),
+          y = stats::reorder(.data$displayName, .data$accuracy),
           x = .data$accuracy
         )
       ) +

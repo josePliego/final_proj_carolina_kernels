@@ -18,8 +18,19 @@ usethis::use_package("ggplot2")
 usethis::use_package("rlang")
 usethis::use_package("tidyr")
 usethis::use_package("scales")
+usethis::use_package("stats")
+usethis::use_package("bslib")
+usethis::use_package("stringr")
+usethis::use_package("utils")
+usethis::use_package("tidyverse", type = "Suggests")
+usethis::use_package("kableExtra", type = "Suggests")
 
 usethis::use_pipe(export = TRUE)
+
+usethis::use_data_raw("PLAYERS")
+usethis::use_data_raw("PFFScoutingData")
+usethis::use_data_raw("PLAYS")
+usethis::use_data_raw("TRACKING")
 
 # Engineering
 
@@ -35,6 +46,7 @@ golem::add_module(name = "04_plots")
 usethis::use_r("theme_carKer")
 usethis::use_r("make_plot_list")
 usethis::use_r("get_plot")
+usethis::use_r("global")
 
 ## External resources
 ## Creates .css file at inst/app/www

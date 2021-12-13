@@ -3,8 +3,6 @@
 #' @param playtype Special teams play type
 #'
 #' @return A list with plots available.
-#'
-#' @examples make_plot_list()
 make_plot_list <- function(playtype = "Punt") {
   out <- list()
   if (playtype == "Punt") {

@@ -43,8 +43,7 @@ mod_02_playtype_server <- function(id, r) {
               .data$kickDirectionActual,
               .data$hangTime
             ),
-          by = c("gameId","playId"),
-          snapDetail = snapDetail
+          by = c("gameId","playId")
         )
 
       output$plot_types <- renderUI({

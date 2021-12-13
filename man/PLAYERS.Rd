@@ -7,9 +7,9 @@
 \format{
 A data frame with 2732 rows and 7 variables: \describe{
   \item{nflId}{Player identification number, unique across players}
-  \item{Height}{Player height} \item{Weight}{Player weight}
+  \item{height}{Player height} \item{weight}{Player weight}
   \item{birthDate}{Date of birth (YYYY-MM-DD)} \item{collegeName}{Player
-  college} \item{Position}{Player position} \item{Player position}{Player
+  college} \item{Position}{Player position} \item{displayName}{Player
   name} }
 }
 \source{
