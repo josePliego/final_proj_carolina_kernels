@@ -295,3 +295,104 @@ plot_top_kickers <- function(df, playType) {
   return(fig)
 
 }
+
+#' Extra Points Plots
+#'
+#' @param df A dataframe containing information on NFL plays
+#' @param plot_type Plot one of distribution, successful or unsuccesful
+#'
+#' @return A ggplot figure containing extra point plots
+#' @export
+#'
+plot_extra_point <- function(df, plot_type = "distribution") {
+
+  fig <- df %>%
+    dplyr::filter(.data$specialTeamsPlayType == "Extra Point")
+
+  if (plot_type == "distribution") {
+    fig <- fig %>%
+      dplyr::select(.data$specialTeamsResult) %>%
+      tidyr::drop_na() %>%
+      dplyr::count(.data$specialTeamsResult) %>%
+      dplyr::mutate(across(n, ~.x/sum(.x))) %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          x = reorder(.data$specialTeamsResult, -.data$n),
+          y = .data$n
+          )
+      ) +
+      ggplot2::geom_col(fill = "antiquewhite") +
+      ggplot2::labs(
+        y = "", x = "", title = "EXTRA POINT SUCCESS DISTRIBUTION"
+        ) +
+      ggplot2::scale_y_continuous(labels = scales::label_percent()) +
+      theme_carKer()
+  }
+
+  if (plot_type == "successful") {
+    fig <- fig %>%
+      dplyr::group_by(.data$kickerId) %>%
+      dplyr::summarise(
+        accuracy = sum(
+          .data$specialTeamsResult == "Kick Attempt Good", na.rm = TRUE
+        ),
+        tot = dplyr::n()
+      ) %>%
+      dplyr::arrange(dplyr::desc(.data$accuracy)) %>%
+      dplyr::left_join(
+        PLAYERS %>%
+          dplyr::select(kickerId = .data$nflId, .data$displayName),
+        by = c("kickerId")
+      ) %>%
+      dplyr::slice(1:10) %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          y = reorder(.data$displayName, .data$accuracy),
+          x = .data$accuracy
+        )
+      ) +
+      ggplot2::geom_bar(stat = "identity", fill = "antiquewhite") +
+      ggplot2::labs(
+        x = "Accurate Kicks",
+        y = "",
+        title = "NUMBER OF ACCURATE KICKS BY KICKER"
+      ) +
+      ggplot2::scale_x_continuous(expand = c(0, 1)) +
+      theme_carKer()
+  }
+
+  if (plot_type == "unsuccessful") {
+    fig <- fig %>%
+      dplyr::group_by(.data$kickerId) %>%
+      dplyr::summarise(
+        accuracy = sum(
+          .data$specialTeamsResult == "Kick Attempt No Good", na.rm = TRUE
+        ),
+        tot = dplyr::n()
+      ) %>%
+      dplyr::arrange(dplyr::desc(.data$accuracy)) %>%
+      dplyr::left_join(
+        PLAYERS %>%
+          dplyr::select(kickerId = .data$nflId, .data$displayName),
+        by = c("kickerId")
+      ) %>%
+      dplyr::slice(1:10) %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          y = reorder(.data$displayName, .data$accuracy),
+          x = .data$accuracy
+        )
+      ) +
+      ggplot2::geom_bar(stat = "identity", fill = "antiquewhite") +
+      ggplot2::labs(
+        x = "Inaccurate Kicks",
+        y = "",
+        title = "NUMBER OF INACCURATE KICKS BY KICKER"
+      ) +
+      ggplot2::scale_x_continuous(expand = c(0, .1)) +
+      theme_carKer()
+  }
+
+  return(fig)
+
+}
