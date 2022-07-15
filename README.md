@@ -7,6 +7,8 @@ Carolina Kernels - Final Project
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
+Andrew Amore & Jose Pliego & Jaskaran Singh & Joon Sup Park
+
 ``` r
 library(carolinaKernels)
 # carolinaKernels::run_app()
